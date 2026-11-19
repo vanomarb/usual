@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact Usual</title>
+    <meta name="description" content="Questions about an order, your stamp card or the app? Send Usual a message, find branch hours, or read the answers to common questions." />
+    <!-- include components/head.html -->
+    <script type="module" src="/main.ts"></script>
+  </head>
+  <body>
+    <!-- include components/header.html -->
+
+    <main id="main">
+      <section class="mx-auto max-w-page px-gutter pt-8 sm:pt-12 lg:pt-14" aria-labelledby="contact-title">
+        <div class="grid gap-12 lg:grid-cols-12 lg:gap-x-6">
+          <div class="lg:col-span-5">
+            <h1 id="contact-title" class="text-h1">Contact us</h1>
+            <p class="mt-4 max-w-[40ch] text-lg">Questions about an order, your stamp card or the app? Write to the team at the branch you choose.</p>
+            <p class="mt-4 max-w-[44ch] text-sm text-muted">This is a demonstration site, so the form sends nothing. <button type="button" class="link text-ink" data-concept>About this site</button></p>
+            <h2 class="mt-10 text-h3">Visit a branch</h2>
+            <dl class="mt-4 grid gap-3">
+              <div class="border-t border-line pt-3"><dt class="font-semibold">IT Park</dt><dd class="text-muted">Open 24 hours</dd></div>
+              <div class="border-t border-line pt-3"><dt class="font-semibold">Banilad</dt><dd class="text-muted">7:00 AM to 10:00 PM</dd></div>
+              <div class="border-t border-line pt-3"><dt class="font-semibold">Capitol Site</dt><dd class="text-muted">7:00 AM to 10:00 PM</dd></div>
+            </dl>
+          </div>
+
+          <div class="lg:col-span-6 lg:col-start-7">
+            <form class="grid gap-6 rounded-surface border border-line bg-surface p-6 sm:p-8" data-contact-form novalidate aria-labelledby="contact-form-title">
+              <h2 id="contact-form-title" class="text-h3">Send a message</h2>
+              <div>
+                <label class="font-semibold" for="contact-name">First name</label>
+                <input class="field mt-2" id="contact-name" name="firstName" type="text" autocomplete="given-name" autocapitalize="words" aria-describedby="contact-name-error" />
+                <p class="field-error" id="contact-name-error" hidden><i data-icon="warning-circle"></i><span data-msg></span></p>
+              </div>
+              <fieldset>
+                <legend class="font-semibold">Reach me by</legend>
+                <div class="chips mt-2" data-contact-via>
+                  <label class="chip"><input type="radio" name="via" value="email" checked /><span class="chip__face">Email</span></label>
+                  <label class="chip"><input type="radio" name="via" value="mobile" /><span class="chip__face">Mobile number</span></label>
+                </div>
+              </fieldset>
+              <div>
+                <label class="font-semibold" for="contact-reach" data-contact-label>Email address</label>
+                <input class="field mt-2" id="contact-reach" name="contact" type="email" autocomplete="email" spellcheck="false" aria-describedby="contact-reach-hint contact-reach-error" data-contact-input />
+                <p class="step__hint" id="contact-reach-hint" data-contact-hint>For example lea@example.com.</p>
+                <p class="field-error" id="contact-reach-error" hidden><i data-icon="warning-circle"></i><span data-msg></span></p>
+              </div>
+              <div class="grid gap-6 sm:grid-cols-2">
+                <div>
+                  <label class="font-semibold" for="contact-branch">Branch</label>
+                  <select class="field mt-2" id="contact-branch" name="branch">
+                    <option value="any">Any branch</option>
+                    <option value="it-park">IT Park</option>
+                    <option value="banilad">Banilad</option>
+                    <option value="capitol">Capitol Site</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="font-semibold" for="contact-topic">Topic</label>
+                  <select class="field mt-2" id="contact-topic" name="topic">
+                    <option value="order">An order</option>
+                    <option value="rewards">Rewards and stamps</option>
+                    <option value="app">The app</option>
+                    <option value="accessibility">Accessibility</option>
+                    <option value="privacy">Privacy and my data</option>
+                    <option value="other">Something else</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label class="font-semibold" for="contact-message">Message</label>
+                <textarea class="field mt-2 min-h-36 max-w-none py-3" id="contact-message" name="message" rows="5" maxlength="1000" aria-describedby="contact-message-error"></textarea>
+                <p class="field-error" id="contact-message-error" hidden><i data-icon="warning-circle"></i><span data-msg></span></p>
+              </div>
+              <div>
+                <button class="btn btn-primary" type="submit">Send message</button>
+              </div>
+            </form>
+            <div class="rounded-surface border border-line bg-surface p-6 sm:p-8" data-contact-done tabindex="-1" hidden>
+              <p class="flex items-center gap-2 font-semibold text-success"><i data-icon="check-circle"></i><span data-contact-done-title>Thanks</span></p>
+              <p class="mt-3">This is a demonstration site, so your message wasn’t sent and no one will reply.</p>
+              <button type="button" class="link mt-4 inline-flex min-h-11 items-center" data-contact-again>Write another message</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-section" id="faq" aria-labelledby="faq-title">
+        <div class="mx-auto grid max-w-page gap-8 px-gutter lg:grid-cols-12 lg:gap-x-6">
+          <h2 id="faq-title" class="text-h2 lg:sticky lg:top-24 lg:col-span-4 lg:self-start">Questions people ask</h2>
+          <div class="border-t border-ink lg:col-span-7 lg:col-start-6">
+            <details class="group border-b border-line">
+              <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-4 text-lg font-semibold hover:underline hover:underline-offset-4 [&::-webkit-details-marker]:hidden">How far ahead can I order?<i data-icon="caret-down" class="transition-transform group-open:rotate-180"></i></summary>
+              <p class="max-w-[60ch] pb-6">Pickup times start 10 minutes from now, every 5 minutes. Banilad and Capitol Site take their last pickup at 9:45 PM; IT Park takes orders all night.</p>
+            </details>
+            <details class="group border-b border-line">
+              <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-4 text-lg font-semibold hover:underline hover:underline-offset-4 [&::-webkit-details-marker]:hidden">How do I pay?<i data-icon="caret-down" class="transition-transform group-open:rotate-180"></i></summary>
+              <p class="max-w-[60ch] pb-6">Choose GCash, Maya or a card when you place your order, and confirm in that app or with a card saved in the Usual app. We never ask for card or account numbers on the site.</p>
+            </details>
+            <details class="group border-b border-line">
+              <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-4 text-lg font-semibold hover:underline hover:underline-offset-4 [&::-webkit-details-marker]:hidden">Can I cancel an order?<i data-icon="caret-down" class="transition-transform group-open:rotate-180"></i></summary>
+              <p class="max-w-[60ch] pb-6">Yes, in the app until we start making it, for a full refund. Once your drink is being made, tell the barista if anything is wrong and we will make it again.</p>
+            </details>
+            <details class="group border-b border-line">
+              <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-4 text-lg font-semibold hover:underline hover:underline-offset-4 [&::-webkit-details-marker]:hidden">Do I need an account?<i data-icon="caret-down" class="transition-transform group-open:rotate-180"></i></summary>
+              <p class="max-w-[60ch] pb-6">No. You can order as a guest. Signing in with your email or mobile number keeps your stamp card and saved usual in one place.</p>
+            </details>
+            <details class="group border-b border-line">
+              <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-4 text-lg font-semibold hover:underline hover:underline-offset-4 [&::-webkit-details-marker]:hidden">How do stamps work?<i data-icon="caret-down" class="transition-transform group-open:rotate-180"></i></summary>
+              <p class="max-w-[60ch] pb-6">Every drink you order ahead earns a stamp, at any branch. Nine stamps earn a free drink, any size, any milk and extras.</p>
+            </details>
+            <details class="group border-b border-line">
+              <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-4 text-lg font-semibold hover:underline hover:underline-offset-4 [&::-webkit-details-marker]:hidden">Do you have drinks without milk or sugar?<i data-icon="caret-down" class="transition-transform group-open:rotate-180"></i></summary>
+              <p class="max-w-[60ch] pb-6">Yes. Americano, cold brew and calamansi soda come without milk, oat and soy milk are always in the fridge, and any drink can be made with 0% sugar.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- include components/footer.html -->
+  </body>
+</html>

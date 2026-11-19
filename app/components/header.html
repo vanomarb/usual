@@ -1,0 +1,53 @@
+<a class="sr-only rounded-control bg-ink px-4 py-2 font-semibold text-surface focus:not-sr-only focus:fixed focus:top-2 focus:left-4 focus:z-50" href="#main">Skip to content</a>
+
+<header class="sticky top-0 z-40 border-b border-transparent bg-canvas transition-colors data-scrolled:border-line" data-header>
+  <div class="relative mx-auto flex h-14 max-w-page items-center gap-1 px-gutter sm:gap-2 lg:h-16 lg:gap-3">
+    <a href="%BASE_URL%" class="mr-auto inline-flex min-h-11 items-center gap-2 text-wordmark lg:mr-7" data-page="home" aria-label="Usual, home">
+      <span class="stamp-mark" aria-hidden="true">u</span>
+      <span>Usual</span>
+    </a>
+    <nav class="hidden lg:mr-auto lg:block" aria-label="Pages">
+      <ul role="list" class="flex gap-8">
+        <li><a class="inline-flex min-h-11 items-center font-medium hover:underline hover:underline-offset-4 aria-[current=page]:underline aria-[current=page]:decoration-2 aria-[current=page]:underline-offset-4" href="%BASE_URL%menu/" data-page="menu">Menu</a></li>
+        <li><a class="inline-flex min-h-11 items-center font-medium hover:underline hover:underline-offset-4 aria-[current=page]:underline aria-[current=page]:decoration-2 aria-[current=page]:underline-offset-4" href="%BASE_URL%rewards/" data-page="rewards">Rewards</a></li>
+        <li><a class="inline-flex min-h-11 items-center font-medium hover:underline hover:underline-offset-4 aria-[current=page]:underline aria-[current=page]:decoration-2 aria-[current=page]:underline-offset-4" href="%BASE_URL%branches/" data-page="branches">Branches</a></li>
+      </ul>
+    </nav>
+    <!-- Fixed width, so the signed-in first name never moves the buttons beside it. -->
+    <a class="hidden min-h-11 w-34 items-center justify-end gap-2 font-medium hover:underline hover:underline-offset-4 aria-[current=page]:underline aria-[current=page]:decoration-2 aria-[current=page]:underline-offset-4 lg:inline-flex" href="%BASE_URL%account/" data-page="account">
+      <i data-icon="user-circle" class="size-6 shrink-0"></i><span class="truncate" data-account-label>Sign in</span>
+    </a>
+    <a class="icon-btn relative aria-[current=page]:bg-band" href="%BASE_URL%bag/" data-page="bag" data-bag-link aria-label="Your bag">
+      <i data-icon="bag" class="size-6"></i>
+      <span class="bag-count" data-bag-count hidden></span>
+    </a>
+    <a class="btn btn-primary ml-1 min-h-11 px-4 aria-[current=page]:bg-accent-hover lg:ml-2 lg:min-h-12 lg:px-5.5" href="%BASE_URL%order/" data-page="order"><span class="lg:hidden">Order</span><span class="hidden lg:inline">Order ahead</span></a>
+    <!-- commandfor/command open the sheet without JavaScript where supported; shared/nav.ts takes over everywhere. -->
+    <button type="button" class="icon-btn -mr-2 lg:hidden" aria-label="Menu" aria-haspopup="dialog" aria-expanded="false" aria-controls="site-menu" commandfor="site-menu" command="show-modal" data-menu-open>
+      <i data-icon="list" class="size-6"></i>
+    </button>
+  </div>
+</header>
+
+<dialog class="sheet sheet--nav" id="site-menu" aria-label="Menu" closedby="any" data-nav-menu>
+  <div class="max-h-[inherit] overflow-y-auto overscroll-contain">
+    <div class="flex min-h-16 items-center justify-between gap-4 pr-3 pl-gutter">
+      <p class="inline-flex items-center gap-2 text-wordmark"><span class="stamp-mark" aria-hidden="true">u</span>Usual</p>
+      <button type="button" class="icon-btn" aria-label="Close" commandfor="site-menu" command="close" data-menu-close><i data-icon="x" class="size-6"></i></button>
+    </div>
+    <nav aria-label="Pages">
+      <ul role="list" class="border-t border-line">
+        <li class="border-b border-line"><a class="flex min-h-13 items-center px-gutter text-lg font-medium aria-[current=page]:underline aria-[current=page]:decoration-2 aria-[current=page]:underline-offset-4" href="%BASE_URL%" data-page="home">Home</a></li>
+        <li class="border-b border-line"><a class="flex min-h-13 items-center px-gutter text-lg font-medium aria-[current=page]:underline aria-[current=page]:decoration-2 aria-[current=page]:underline-offset-4" href="%BASE_URL%menu/" data-page="menu">Menu</a></li>
+        <li class="border-b border-line"><a class="flex min-h-13 items-center px-gutter text-lg font-medium aria-[current=page]:underline aria-[current=page]:decoration-2 aria-[current=page]:underline-offset-4" href="%BASE_URL%rewards/" data-page="rewards">Rewards</a></li>
+        <li class="border-b border-line"><a class="flex min-h-13 items-center px-gutter text-lg font-medium aria-[current=page]:underline aria-[current=page]:decoration-2 aria-[current=page]:underline-offset-4" href="%BASE_URL%branches/" data-page="branches">Branches</a></li>
+        <li class="border-b border-line"><a class="flex min-h-13 items-center px-gutter text-lg font-medium aria-[current=page]:underline aria-[current=page]:decoration-2 aria-[current=page]:underline-offset-4" href="%BASE_URL%about/" data-page="about">About</a></li>
+        <li class="border-b border-line"><a class="flex min-h-13 items-center px-gutter text-lg font-medium aria-[current=page]:underline aria-[current=page]:decoration-2 aria-[current=page]:underline-offset-4" href="%BASE_URL%contact/" data-page="contact">Contact</a></li>
+        <li class="border-b border-line"><a class="flex min-h-13 items-center gap-2 px-gutter text-lg font-medium aria-[current=page]:underline aria-[current=page]:decoration-2 aria-[current=page]:underline-offset-4" href="%BASE_URL%account/" data-page="account"><i data-icon="user-circle" class="size-6"></i><span data-account-label>Sign in</span></a></li>
+      </ul>
+    </nav>
+    <div class="px-gutter pt-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))]">
+      <a class="btn btn-primary w-full aria-[current=page]:bg-accent-hover" href="%BASE_URL%order/" data-page="order">Order ahead</a>
+    </div>
+  </div>
+</dialog>

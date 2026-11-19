@@ -1,0 +1,9 @@
+{
+  // The tests, the jsdom harness and vite.config.ts, with the same strict settings as tsconfig.json.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["vite/client", "node"]
+  },
+  "include": ["app/**/*.test.ts", "build/**/*.test.ts", "tests", "vite.config.ts"],
+  "exclude": []
+}

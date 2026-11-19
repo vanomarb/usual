@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Usual branches: IT Park, Banilad and Capitol Site</title>
+    <meta name="description" content="Usual’s three branches in Cebu City: IT Park, open all night, and Banilad and Capitol Site, open 7:00 AM to 10:00 PM." />
+    <!-- include components/head.html -->
+    <script type="module" src="/main.ts"></script>
+  </head>
+  <body>
+    <!-- include components/header.html -->
+
+    <main id="main">
+      <section class="pt-8 sm:pt-12 lg:pt-14" id="branches" aria-labelledby="branches-title">
+        <div class="mx-auto max-w-page px-gutter">
+          <div class="grid gap-4 md:grid-cols-2 md:items-end md:gap-x-6">
+            <h1 id="branches-title" class="text-h1">Three branches in Cebu City</h1>
+            <p class="max-w-[46ch] text-lg">IT Park stays open all night for the night shift. Banilad and Capitol Site open from 7:00 AM to 10:00 PM.</p>
+          </div>
+          <ul class="mt-10 grid gap-x-6 md:grid-cols-3" role="list" data-branches data-stagger>
+            <li class="flex flex-col gap-3 border-t border-ink pt-5 pb-8" data-branch="it-park">
+              <h2 class="text-h3">IT Park</h2>
+              <p class="flex items-center gap-2 font-semibold"><i data-icon="clock"></i>Open 24 hours</p>
+              <div class="min-h-[3.25rem] md:min-h-[4.5rem] lg:min-h-[3.25rem]" data-branch-now></div>
+              <p class="text-md text-muted">Open all night, for night-shift breaks and early starts.</p>
+              <button type="button" class="link mt-auto inline-flex min-h-11 items-center self-start" data-concept>Directions</button>
+            </li>
+            <li class="flex flex-col gap-3 border-t border-ink pt-5 pb-8" data-branch="banilad">
+              <h2 class="text-h3">Banilad</h2>
+              <p class="flex items-center gap-2 font-semibold"><i data-icon="clock"></i>7:00 AM to 10:00 PM</p>
+              <div class="min-h-[3.25rem] md:min-h-[4.5rem] lg:min-h-[3.25rem]" data-branch-now></div>
+              <p class="text-md text-muted">A small bar for the morning rush and after-school orders.</p>
+              <button type="button" class="link mt-auto inline-flex min-h-11 items-center self-start" data-concept>Directions</button>
+            </li>
+            <li class="flex flex-col gap-3 border-t border-ink pt-5 pb-8" data-branch="capitol">
+              <h2 class="text-h3">Capitol Site</h2>
+              <p class="flex items-center gap-2 font-semibold"><i data-icon="clock"></i>7:00 AM to 10:00 PM</p>
+              <div class="min-h-[3.25rem] md:min-h-[4.5rem] lg:min-h-[3.25rem]" data-branch-now></div>
+              <p class="text-md text-muted">More tables, for a long afternoon with a laptop.</p>
+              <button type="button" class="link mt-auto inline-flex min-h-11 items-center self-start" data-concept>Directions</button>
+            </li>
+          </ul>
+          <p class="invisible mt-2 text-sm text-muted" data-branch-note>Busy times are from a typical day at this hour, not a live count.</p>
+        </div>
+      </section>
+
+      <section class="py-section" aria-labelledby="faq-title">
+        <div class="mx-auto grid max-w-page gap-8 px-gutter lg:grid-cols-12 lg:gap-x-6">
+          <h2 id="faq-title" class="text-h2 lg:sticky lg:top-24 lg:col-span-4 lg:self-start">Before you visit</h2>
+          <div class="border-t border-ink lg:col-span-7 lg:col-start-6">
+            <details class="group border-b border-line">
+              <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-4 text-lg font-semibold hover:underline hover:underline-offset-4 [&::-webkit-details-marker]:hidden">Which branch is open late?<i data-icon="caret-down" class="transition-transform group-open:rotate-180"></i></summary>
+              <p class="max-w-[60ch] pb-6">IT Park is open all night for the night shift. Banilad and Capitol Site open from 7:00 AM to 10:00 PM, every day.</p>
+            </details>
+            <details class="group border-b border-line">
+              <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-4 text-lg font-semibold hover:underline hover:underline-offset-4 [&::-webkit-details-marker]:hidden">Are the busy times live?<i data-icon="caret-down" class="transition-transform group-open:rotate-180"></i></summary>
+              <p class="max-w-[60ch] pb-6">No. They show how busy each branch usually is at this hour on a typical day. Use them to plan your break, not as a live count.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- include components/footer.html -->
+  </body>
+</html>

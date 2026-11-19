@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rewards: nine stamps, and the tenth drink is free at Usual</title>
+    <meta name="description" content="Usual’s stamp card: every drink you order ahead gets a stamp, at any branch, and the tenth drink is free." />
+    <!-- include components/head.html -->
+    <script type="module" src="/main.ts"></script>
+  </head>
+  <body>
+    <!-- include components/header.html -->
+
+    <main id="main">
+      <section class="bg-band pt-10 pb-section sm:pt-14" id="rewards" aria-labelledby="rewards-title">
+        <!-- The visitor's own card follows the intro, so on phones it is seen before the rules. -->
+        <div class="mx-auto grid max-w-page gap-10 px-gutter lg:grid-cols-12 lg:gap-x-6 lg:gap-y-8">
+          <div class="lg:col-span-6">
+            <h1 id="rewards-title" class="text-h1">Nine stamps, and the tenth is free</h1>
+            <p class="mt-4 max-w-[44ch] text-lg">Every drink you order ahead gets a stamp. Fill the card with nine and your tenth drink is on us, any size, any milk.</p>
+          </div>
+
+          <div class="lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:self-center" data-stamp-card>
+            <div class="max-w-md rounded-surface border border-line bg-surface p-6 sm:p-8 lg:ml-auto">
+              <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
+                <p class="flex items-center gap-2 font-semibold"><span class="stamp-mark" aria-hidden="true">u</span>Usual stamp card</p>
+                <p class="text-sm text-muted tabular-nums" data-stamp-progress>0 of 9 stamps</p>
+              </div>
+              <ol class="mt-7 grid w-fit grid-cols-5 gap-x-3 gap-y-4" role="list" aria-hidden="true" data-stamp-slots>
+                <li class="stamp-slot"></li>
+                <li class="stamp-slot"></li>
+                <li class="stamp-slot"></li>
+                <li class="stamp-slot"></li>
+                <li class="stamp-slot"></li>
+                <li class="stamp-slot"></li>
+                <li class="stamp-slot"></li>
+                <li class="stamp-slot"></li>
+                <li class="stamp-slot"></li>
+                <li class="stamp-slot stamp-slot--free">Free</li>
+              </ol>
+              <p class="mt-7 min-h-[2lh] text-sm" data-stamp-note>No stamps yet. Your first drink ordered ahead adds one.</p>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6">
+            <dl class="grid max-w-[44ch] gap-4">
+              <div class="border-t border-line pt-4">
+                <dt class="font-semibold">One stamp per drink</dt>
+                <dd class="mt-0.5 text-muted">Each drink you order ahead adds a stamp, at any branch.</dd>
+              </div>
+              <div class="border-t border-line pt-4">
+                <dt class="font-semibold">Free drink, your way</dt>
+                <dd class="mt-0.5 text-muted">The free drink covers any size, milk and extras.</dd>
+              </div>
+              <div class="border-t border-line pt-4">
+                <dt class="font-semibold">Kept in this browser</dt>
+                <dd class="mt-0.5 text-muted">Your card lives on this device. Clearing site data starts a new one.</dd>
+              </div>
+            </dl>
+            <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <a class="btn btn-primary" href="%BASE_URL%order/">Order ahead</a>
+              <a class="link inline-flex min-h-11 items-center" href="%BASE_URL%menu/">See the menu</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- include components/footer.html -->
+  </body>
+</html>

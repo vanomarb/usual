@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Usual: coffee bar in IT Park, Banilad and Capitol Site</title>
+    <meta name="description" content="Usual is a coffee bar in IT Park, Banilad and Capitol Site, Cebu City. Order ahead, pick a pickup time, find your name on the cup and collect a stamp with every drink." />
+    <!-- include components/head.html -->
+    <link rel="preload" href="/node_modules/@fontsource-variable/hanken-grotesk/files/hanken-grotesk-latin-ext-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <script type="module" src="/main.ts"></script>
+  </head>
+  <body>
+    <!-- include components/header.html -->
+
+    <main id="main">
+      <section class="mx-auto grid max-w-page gap-10 px-gutter pt-8 sm:pt-12 lg:grid-cols-12 lg:items-center lg:gap-x-6 lg:pt-16" aria-labelledby="hero-title">
+        <div class="load-in lg:col-span-6">
+          <h1 id="hero-title" class="max-w-[16ch] text-h1">Your usual, ready at the counter</h1>
+          <p class="mt-5 max-w-[34ch] text-lg">Order from your desk, pick a time, and walk in to your name on the cup.</p>
+          <div class="mt-8 flex flex-wrap items-center gap-x-7 gap-y-3">
+            <a class="btn btn-primary" href="%BASE_URL%order/">Order ahead</a>
+            <a class="link inline-flex min-h-11 items-center" href="%BASE_URL%menu/">See the menu</a>
+          </div>
+        </div>
+        <div class="load-in lg:col-span-5 lg:col-start-8" style="--load-i: 2" data-stamp-card data-stamp-intro>
+          <div class="max-w-md rounded-surface border border-line bg-surface p-6 sm:p-8 lg:ml-auto">
+            <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
+              <h2 class="flex items-center gap-2 font-semibold"><span class="stamp-mark" aria-hidden="true">u</span>Your stamp card</h2>
+              <p class="text-sm text-muted tabular-nums" data-stamp-progress>0 of 9 stamps</p>
+            </div>
+            <ol class="stamp-slots--lg mt-7 grid w-fit grid-cols-5 gap-x-3 gap-y-4 xl:gap-x-4" role="list" aria-hidden="true" data-stamp-slots>
+              <li class="stamp-slot"></li>
+              <li class="stamp-slot"></li>
+              <li class="stamp-slot"></li>
+              <li class="stamp-slot"></li>
+              <li class="stamp-slot"></li>
+              <li class="stamp-slot"></li>
+              <li class="stamp-slot"></li>
+              <li class="stamp-slot"></li>
+              <li class="stamp-slot"></li>
+              <li class="stamp-slot stamp-slot--free">Free</li>
+            </ol>
+            <p class="mt-7 min-h-[2lh] font-semibold" data-stamp-note>No stamps yet. Your first drink ordered ahead adds one.</p>
+            <p class="mt-1 text-sm text-muted">The tenth drink is on us, any size and any milk. <a class="link text-ink" href="%BASE_URL%rewards/">How rewards work</a></p>
+            <p class="mt-6 border-t border-line pt-4 text-sm text-muted">Your card lives in this browser. Usual is a pretend café, so nothing is sent and nobody charges you a peso. <button type="button" class="link text-ink" data-concept>About this site</button></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-page px-gutter pt-section" id="menu" aria-labelledby="menu-title">
+        <div class="flex flex-wrap items-end justify-between gap-x-6 gap-y-2">
+          <h2 id="menu-title" class="text-h2">House favourites</h2>
+          <a class="link inline-flex min-h-11 items-center" href="%BASE_URL%menu/">See the full menu</a>
+        </div>
+        <div class="mt-8 grid gap-x-6 gap-y-12 lg:grid-cols-12">
+          <div class="-mx-gutter snap-x snap-mandatory scroll-px-gutter overflow-x-auto pt-1 pb-2 focus-visible:-outline-offset-2 md:mx-0 md:overflow-visible md:pb-1 lg:col-span-9" role="region" aria-label="House favourites" tabindex="0">
+            <ul class="flex w-max gap-4 px-gutter md:grid md:w-auto md:grid-cols-3 md:gap-6 md:px-0" role="list" data-stagger>
+              <li class="w-[78vw] max-w-80 shrink-0 snap-start md:w-auto md:max-w-none">
+                <button type="button" class="fav-card" data-sheet-drink="spanish-latte" aria-haspopup="dialog" aria-labelledby="fav-spanish-latte-name fav-spanish-latte-price" aria-describedby="fav-spanish-latte-desc">
+                  <span class="fav-card__photo"><img class="aspect-4/5 w-full object-cover" src="/photos/item-spanish-latte-640.webp" srcset="/photos/item-spanish-latte-640.webp 640w, /photos/item-spanish-latte-896.webp 896w" sizes="(min-width: 75rem) 262px, (min-width: 60rem) 21vw, (min-width: 48rem) 30vw, 78vw" width="640" height="800" alt="An iced Spanish latte, espresso swirling into milk, in a clear takeaway cup with a flat lid and a paper straw, on a pale marble counter" loading="lazy" decoding="async" /></span>
+                  <span class="mt-3 block font-semibold" id="fav-spanish-latte-name">Spanish latte</span>
+                  <span class="block text-sm text-muted" id="fav-spanish-latte-desc" data-desc-for="spanish-latte">Espresso, fresh milk and a spoon of condensed milk.</span>
+                  <span class="mt-1 block font-semibold tabular-nums" id="fav-spanish-latte-price"><span class="font-normal text-muted">From</span> ₱165</span>
+                </button>
+              </li>
+              <li class="w-[78vw] max-w-80 shrink-0 snap-start md:w-auto md:max-w-none">
+                <button type="button" class="fav-card" data-sheet-drink="ube-latte" aria-haspopup="dialog" aria-labelledby="fav-ube-latte-name fav-ube-latte-price" aria-describedby="fav-ube-latte-desc">
+                  <span class="fav-card__photo"><img class="aspect-4/5 w-full object-cover" src="/photos/item-ube-latte-640.webp" srcset="/photos/item-ube-latte-640.webp 640w, /photos/item-ube-latte-896.webp 896w" sizes="(min-width: 75rem) 262px, (min-width: 60rem) 21vw, (min-width: 48rem) 30vw, 78vw" width="640" height="800" alt="An iced ube latte, pale lavender over a deeper violet layer, in a clear takeaway cup with a flat lid and a paper straw, on a pale marble counter" loading="lazy" decoding="async" /></span>
+                  <span class="mt-3 block font-semibold" id="fav-ube-latte-name">Ube latte</span>
+                  <span class="block text-sm text-muted" id="fav-ube-latte-desc" data-desc-for="ube-latte">Purple yam blended into milk, sweet and a little earthy.</span>
+                  <span class="mt-1 block font-semibold tabular-nums" id="fav-ube-latte-price"><span class="font-normal text-muted">From</span> ₱170</span>
+                </button>
+              </li>
+              <li class="w-[78vw] max-w-80 shrink-0 snap-start md:w-auto md:max-w-none">
+                <button type="button" class="fav-card" data-sheet-drink="matcha-latte" aria-haspopup="dialog" aria-labelledby="fav-matcha-latte-name fav-matcha-latte-price" aria-describedby="fav-matcha-latte-desc">
+                  <span class="fav-card__photo"><img class="aspect-4/5 w-full object-cover" src="/photos/item-matcha-latte-640.webp" srcset="/photos/item-matcha-latte-640.webp 640w, /photos/item-matcha-latte-896.webp 896w" sizes="(min-width: 75rem) 262px, (min-width: 60rem) 21vw, (min-width: 48rem) 30vw, 78vw" width="640" height="800" alt="An iced matcha latte, green over white milk, in a clear takeaway cup with a flat lid and a paper straw, on a pale marble counter" loading="lazy" decoding="async" /></span>
+                  <span class="mt-3 block font-semibold" id="fav-matcha-latte-name">Matcha latte</span>
+                  <span class="block text-sm text-muted" id="fav-matcha-latte-desc" data-desc-for="matcha-latte">Matcha whisked smooth, then poured over milk.</span>
+                  <span class="mt-1 block font-semibold tabular-nums" id="fav-matcha-latte-price"><span class="font-normal text-muted">From</span> ₱170</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div class="lg:col-span-3">
+            <h3 class="border-b border-ink pb-2 text-h3">Bites</h3>
+            <ul role="list">
+              <li class="border-b border-line">
+                <button type="button" class="menu-item" data-sheet-bite="ensaymada" aria-haspopup="dialog" aria-labelledby="item-ensaymada-name item-ensaymada-price" aria-describedby="item-ensaymada-desc">
+                  <img class="size-16 rounded-thumb object-cover md:size-18" src="/photos/menu-ensaymada-160.webp" srcset="/photos/menu-ensaymada-160.webp 160w, /photos/menu-ensaymada-320.webp 320w" sizes="(min-width: 48rem) 4.5rem, 4rem" width="160" height="160" alt="An ensaymada topped with sugar and grated cheese, on a white plate" loading="lazy" decoding="async" />
+                  <span class="min-w-0">
+                    <span class="block font-semibold" id="item-ensaymada-name">Ensaymada</span>
+                    <span class="mt-0.5 block text-md text-muted" id="item-ensaymada-desc" data-desc-for="ensaymada">A soft, buttery roll topped with sugar and grated cheese.</span>
+                    <span class="mt-1.5 block font-semibold tabular-nums" id="item-ensaymada-price">₱85</span>
+                  </span>
+                </button>
+              </li>
+              <li class="border-b border-line">
+                <button type="button" class="menu-item" data-sheet-bite="banana-bread" aria-haspopup="dialog" aria-labelledby="item-banana-bread-name item-banana-bread-price" aria-describedby="item-banana-bread-desc">
+                  <img class="size-16 rounded-thumb object-cover md:size-18" src="/photos/menu-banana-bread-160.webp" srcset="/photos/menu-banana-bread-160.webp 160w, /photos/menu-banana-bread-320.webp 320w" sizes="(min-width: 48rem) 4.5rem, 4rem" width="160" height="160" alt="Two thick slices of banana bread on a white plate" loading="lazy" decoding="async" />
+                  <span class="min-w-0">
+                    <span class="block font-semibold" id="item-banana-bread-name">Banana bread</span>
+                    <span class="mt-0.5 block text-md text-muted" id="item-banana-bread-desc" data-desc-for="banana-bread">A thick slice, made with very ripe bananas.</span>
+                    <span class="mt-1.5 block font-semibold tabular-nums" id="item-banana-bread-price">₱95</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="menu-item" data-sheet-bite="cheese-pandesal" aria-haspopup="dialog" aria-labelledby="item-cheese-pandesal-name item-cheese-pandesal-price" aria-describedby="item-cheese-pandesal-desc">
+                  <img class="size-16 rounded-thumb object-cover md:size-18" src="/photos/menu-cheese-pandesal-160.webp" srcset="/photos/menu-cheese-pandesal-160.webp 160w, /photos/menu-cheese-pandesal-320.webp 320w" sizes="(min-width: 48rem) 4.5rem, 4rem" width="160" height="160" alt="Three cheese pandesal, one torn open to show the cheese, on a white plate" loading="lazy" decoding="async" />
+                  <span class="min-w-0">
+                    <span class="block font-semibold" id="item-cheese-pandesal-name">Cheese pandesal, 3 pieces</span>
+                    <span class="mt-0.5 block text-md text-muted" id="item-cheese-pandesal-desc" data-desc-for="cheese-pandesal">Warm pandesal with melted cheese inside.</span>
+                    <span class="mt-1.5 block font-semibold tabular-nums" id="item-cheese-pandesal-price">₱75</span>
+                  </span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-page px-gutter pt-14 lg:pt-20" data-promo aria-labelledby="promo-title">
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-4 rounded-surface bg-band px-5 py-4 sm:px-6 md:flex-nowrap md:gap-x-6">
+          <svg class="cup h-16 w-auto shrink-0 md:h-20" viewBox="0 0 200 280" width="200" height="280" aria-hidden="true" focusable="false" data-size="16oz">
+            <defs>
+              <clipPath id="promo-cup-clip"><path d="M34 54 L52.5 256 Q53 264 61 264 L139 264 Q147 264 147.5 256 L166 54 Z" /></clipPath>
+            </defs>
+            <g class="cup__body">
+              <path class="cup__inside" d="M34 54 L52.5 256 Q53 264 61 264 L139 264 Q147 264 147.5 256 L166 54 Z" />
+              <g clip-path="url(#promo-cup-clip)">
+                <rect class="cup__layer" x="20" y="0" width="160" height="280" data-layer="froth" style="transform: translateY(87.6px)" />
+                <rect class="cup__layer" x="20" y="0" width="160" height="280" data-layer="tablea" style="transform: translateY(112.3px)" />
+              </g>
+              <path class="cup__outline" d="M34 54 L52.5 256 Q53 264 61 264 L139 264 Q147 264 147.5 256 L166 54 Z" />
+              <rect class="cup__rim" x="27" y="44" width="146" height="13" rx="6.5" />
+              <path class="cup__sleeve" d="M38.3 128 L161.7 128 L155.9 192 L44.1 192 Z" />
+              <text class="cup__name" x="100" y="167" text-anchor="middle">Tablea</text>
+            </g>
+          </svg>
+          <div class="min-w-0 flex-1">
+            <h2 id="promo-title" class="font-semibold">For the ber months: Tablea hot chocolate</h2>
+            <p class="mt-0.5 text-md text-muted"><span data-desc-for="tablea">Cebu tablea melted into hot milk. Thick, and not too sweet.</span> <span class="font-semibold whitespace-nowrap text-ink tabular-nums">₱150 for 12 oz, ₱170 for 16 oz</span></p>
+          </div>
+          <button type="button" class="btn btn-secondary w-full shrink-0 md:w-auto" data-sheet-drink="tablea" aria-haspopup="dialog">Add a Tablea</button>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-page px-gutter pt-section" id="branches" aria-labelledby="branches-title">
+        <div class="grid gap-x-6 lg:grid-cols-12 lg:items-end">
+          <div class="lg:col-span-7">
+            <div class="flex flex-wrap items-end justify-between gap-x-6 gap-y-2">
+              <h2 id="branches-title" class="text-h2">Where to pick it up</h2>
+              <a class="link inline-flex min-h-11 items-center" href="%BASE_URL%branches/">Hours and busy times</a>
+            </div>
+            <p class="mt-3 max-w-[44ch] text-lg">Order now and it’s ready in about ten minutes. IT Park never closes.</p>
+            <ul class="mt-8 border-t border-ink" role="list" data-stagger>
+              <li class="grid gap-x-6 gap-y-2 border-b border-line py-5 sm:grid-cols-[13rem_minmax(0,1fr)]">
+                <div>
+                  <h3 class="text-h3">IT Park</h3>
+                  <p class="mt-1 flex items-center gap-2 text-muted whitespace-nowrap"><i data-icon="clock" class="text-ink"></i>Open 24 hours</p>
+                </div>
+                <div class="min-h-[3.25rem] sm:min-h-[4.5rem] sm:pt-1 md:min-h-[3.25rem]">
+                  <div data-branch-status="it-park"></div>
+                  <p class="mt-1 text-md text-muted" data-branch-pickup="it-park"></p>
+                </div>
+              </li>
+              <li class="grid gap-x-6 gap-y-2 border-b border-line py-5 sm:grid-cols-[13rem_minmax(0,1fr)]">
+                <div>
+                  <h3 class="text-h3">Banilad</h3>
+                  <p class="mt-1 flex items-center gap-2 text-muted whitespace-nowrap"><i data-icon="clock" class="text-ink"></i>7:00 AM to 10:00 PM</p>
+                </div>
+                <div class="min-h-[3.25rem] sm:min-h-[4.5rem] sm:pt-1 md:min-h-[3.25rem]">
+                  <div data-branch-status="banilad"></div>
+                  <p class="mt-1 text-md text-muted" data-branch-pickup="banilad"></p>
+                </div>
+              </li>
+              <li class="grid gap-x-6 gap-y-2 border-b border-line py-5 sm:grid-cols-[13rem_minmax(0,1fr)]">
+                <div>
+                  <h3 class="text-h3">Capitol Site</h3>
+                  <p class="mt-1 flex items-center gap-2 text-muted whitespace-nowrap"><i data-icon="clock" class="text-ink"></i>7:00 AM to 10:00 PM</p>
+                </div>
+                <div class="min-h-[3.25rem] sm:min-h-[4.5rem] sm:pt-1 md:min-h-[3.25rem]">
+                  <div data-branch-status="capitol"></div>
+                  <p class="mt-1 text-md text-muted" data-branch-pickup="capitol"></p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <figure class="hidden lg:col-span-4 lg:col-start-9 lg:block">
+            <img
+              class="aspect-4/5 w-full rounded-surface object-cover object-[50%_85%]"
+              src="/photos/hero-iced-coffee-matcha-800.webp"
+              srcset="/photos/hero-iced-coffee-matcha-800.webp 800w, /photos/hero-iced-coffee-matcha-1024.webp 1024w"
+              sizes="(min-width: 75rem) 357px, 30vw"
+              width="1024"
+              height="1280"
+              alt="An iced coffee and an iced matcha latte in two clear glasses on a pale marble counter, in morning light from a window"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        </div>
+      </section>
+
+      <section class="py-section" id="app" aria-labelledby="app-title">
+        <div class="mx-auto grid max-w-page gap-12 px-gutter lg:grid-cols-12 lg:items-center lg:gap-x-6">
+          <div class="lg:col-span-5 lg:col-start-7 lg:row-start-1">
+            <h2 id="app-title" class="max-w-[18ch] text-h2">Save your usual once, then reorder in one tap</h2>
+            <p class="mt-4 max-w-[42ch] text-lg">The Usual app keeps your saved order and every branch’s pickup times on your phone.</p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <button type="button" class="store-btn" data-concept>
+                <i data-icon="apple-logo" class="size-7"></i>
+                <span class="grid leading-tight"><span class="text-xs">Download on the</span> <span class="text-lg font-semibold">App Store</span></span>
+              </button>
+              <button type="button" class="store-btn" data-concept>
+                <i data-icon="google-play-logo" class="size-7"></i>
+                <span class="grid leading-tight"><span class="text-xs">Get it on</span> <span class="text-lg font-semibold">Google Play</span></span>
+              </button>
+            </div>
+          </div>
+          <figure class="devices lg:col-span-4 lg:col-start-2 lg:row-start-1" role="img" aria-label="The Usual app on a phone. The home screen shows Lea’s usual, an iced Spanish latte with oat milk for ₱220, ready 7:55 AM at IT Park, and two popular drinks.">
+            <div class="device" aria-hidden="true">
+              <div class="device__screen">
+                <span class="device__island"></span>
+                <div class="device__status">
+                  <span>7:41</span>
+                  <span><i data-icon="cell-signal-full" data-weight="fill"></i><i data-icon="wifi-high" data-weight="bold"></i><i data-icon="battery-full" data-weight="fill"></i></span>
+                </div>
+                <div class="device__body">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <p class="text-muted">Good morning</p>
+                      <p class="text-lg leading-tight font-bold">Lea</p>
+                    </div>
+                    <span class="grid size-8 place-items-center rounded-full bg-band text-sm font-bold">L</span>
+                  </div>
+                  <div class="rounded-surface bg-accent-wash p-3">
+                    <div class="flex gap-3">
+                      <img class="size-14 shrink-0 rounded-thumb object-cover" src="/photos/menu-spanish-latte-160.webp" srcset="/photos/menu-spanish-latte-160.webp 160w, /photos/menu-spanish-latte-320.webp 320w" sizes="3.5rem" width="160" height="160" alt="" loading="lazy" decoding="async" />
+                      <div class="min-w-0">
+                        <p class="font-semibold text-muted">Your usual</p>
+                        <p class="text-sm font-bold">Spanish latte</p>
+                        <p class="text-muted">16 oz, iced, oat milk, 50% sugar</p>
+                      </div>
+                    </div>
+                    <div class="mt-3 flex items-center justify-between">
+                      <span class="text-sm font-bold tabular-nums">₱220</span>
+                      <span class="rounded-control bg-accent px-3.5 py-1.5 font-semibold text-accent-ink">Reorder</span>
+                    </div>
+                  </div>
+                  <p class="flex items-center gap-1.5 font-semibold"><i data-icon="clock" class="size-4"></i>IT Park, ready 7:55 AM</p>
+                  <div class="flex items-baseline justify-between">
+                    <p class="text-sm font-bold">Popular now</p>
+                    <p class="font-semibold text-accent">See all</p>
+                  </div>
+                  <div class="grid grid-cols-2 gap-2.5">
+                    <div>
+                      <img class="aspect-4/3 w-full rounded-surface object-cover object-[50%_62%]" src="/photos/menu-ube-latte-320.webp" width="320" height="320" alt="" loading="lazy" decoding="async" />
+                      <p class="mt-1.5 font-semibold">Ube latte</p>
+                      <p class="text-muted tabular-nums">₱170</p>
+                    </div>
+                    <div>
+                      <img class="aspect-4/3 w-full rounded-surface object-cover object-[50%_62%]" src="/photos/menu-matcha-latte-320.webp" width="320" height="320" alt="" loading="lazy" decoding="async" />
+                      <p class="mt-1.5 font-semibold">Matcha latte</p>
+                      <p class="text-muted tabular-nums">₱170</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="device__tabbar">
+                  <span class="device__tab" data-active><i data-icon="house" data-weight="fill"></i>Home</span>
+                  <span class="device__tab"><i data-icon="coffee"></i>Menu</span>
+                  <span class="device__tab"><i data-icon="bag"></i>Bag</span>
+                  <span class="device__tab"><i data-icon="stamp"></i>Rewards</span>
+                  <span class="device__tab"><i data-icon="user-circle"></i>Account</span>
+                </div>
+                <span class="device__home"></span>
+              </div>
+            </div>
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <!-- include components/footer.html -->
+  </body>
+</html>

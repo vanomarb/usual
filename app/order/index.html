@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en" class="max-lg:scroll-pb-28">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Order ahead at Usual</title>
+    <meta name="description" content="Order ahead at Usual: choose your drink, size, milk and sugar, pick a branch and a pickup time, and find your name on the cup." />
+    <!-- include components/head.html -->
+    <link rel="preload" href="/node_modules/@fontsource-variable/hanken-grotesk/files/hanken-grotesk-latin-ext-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <noscript><style>[data-order-builder] > :not([data-builder-fallback]) { display: none !important; } [data-builder-fallback] { display: block !important; }</style></noscript>
+    <script type="module" src="/main.ts"></script>
+  </head>
+  <body>
+    <!-- include components/header.html -->
+
+    <main id="main">
+      <section class="pt-8 sm:pt-12 lg:pt-14" id="order" aria-labelledby="order-title">
+        <div class="mx-auto max-w-page px-gutter">
+          <div class="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-x-6">
+            <div class="lg:col-span-7">
+              <h1 id="order-title" class="text-h1">Order ahead for your break</h1>
+              <p class="mt-4 max-w-[46ch] text-lg">Choose your drink, size, milk and sugar. Pick a branch and a pickup time, and we write your name on the cup.</p>
+              <p class="mt-5 max-w-[60ch] text-sm text-muted">This is a demonstration site: orders here send nothing, and nothing is charged. <button type="button" class="link text-ink" data-concept>About this site</button></p>
+            </div>
+            <figure class="hidden lg:col-span-3 lg:col-start-10 lg:block">
+              <img
+                class="aspect-3/4 w-full rounded-surface object-cover"
+                src="/photos/order-barista-pour-800.webp"
+                srcset="/photos/order-barista-pour-800.webp 800w, /photos/order-barista-pour-960.webp 960w"
+                sizes="(min-width: 75rem) 262px, 22vw"
+                width="800"
+                height="1067"
+                alt="A barista’s hands pour espresso from a small steel pitcher into a clear cup of iced milk"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+          </div>
+
+          <div class="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-start lg:gap-x-6" data-order-builder>
+            <p class="hidden rounded-surface border border-line-strong p-6 text-muted lg:col-span-7" data-builder-fallback>Ordering ahead runs in your browser and needs JavaScript. The full menu is just below.</p>
+
+            <div class="order-0 grid gap-x-6 gap-y-3 rounded-surface bg-accent-wash p-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:px-6 lg:col-span-12" data-usual hidden>
+              <div class="min-w-0">
+                <p class="font-semibold">Your usual</p>
+                <p class="text-sm" data-usual-drink></p>
+              </div>
+              <div class="flex flex-wrap items-center gap-x-5 gap-y-2 sm:justify-end">
+                <p class="text-sm"><span class="font-semibold tabular-nums" data-usual-price></span> <span id="usual-ready" data-usual-ready></span></p>
+                <button type="button" class="btn btn-primary" data-usual-order aria-describedby="usual-ready">Order my usual</button>
+              </div>
+            </div>
+
+            <form class="order-2 min-w-0 lg:order-none lg:col-span-7" id="order-form" novalidate aria-labelledby="order-title">
+              <fieldset class="step" data-step="drink">
+                <legend class="step__legend"><h2 class="text-h3">Drink</h2></legend>
+                <div class="grid gap-5">
+                  <div role="group" aria-labelledby="drinks-coffee">
+                    <p class="mb-2 text-sm text-muted" id="drinks-coffee">Coffee</p>
+                    <div class="chips chips--drinks" data-drinks="coffee">
+                      <label class="chip chip--drink"><input type="radio" name="drink" value="americano" /><span class="chip__face">Americano <span class="chip__price">₱120</span></span></label>
+                      <label class="chip chip--drink"><input type="radio" name="drink" value="cafe-latte" /><span class="chip__face">Café latte <span class="chip__price">₱150</span></span></label>
+                      <label class="chip chip--drink"><input type="radio" name="drink" value="spanish-latte" /><span class="chip__face">Spanish latte <span class="chip__price">₱165</span></span></label>
+                      <label class="chip chip--drink"><input type="radio" name="drink" value="sea-salt-latte" checked /><span class="chip__face">Sea salt latte <span class="chip__price">₱175</span></span></label>
+                      <label class="chip chip--drink"><input type="radio" name="drink" value="cortado" /><span class="chip__face">Cortado <span class="chip__price">₱140</span></span></label>
+                      <label class="chip chip--drink"><input type="radio" name="drink" value="cold-brew" /><span class="chip__face">Cold brew <span class="chip__price">₱150</span></span></label>
+                    </div>
+                  </div>
+                  <div role="group" aria-labelledby="drinks-not-coffee">
+                    <p class="mb-2 text-sm text-muted" id="drinks-not-coffee">Not coffee</p>
+                    <div class="chips chips--drinks" data-drinks="not-coffee">
+                      <label class="chip chip--drink"><input type="radio" name="drink" value="ube-latte" /><span class="chip__face">Ube latte <span class="chip__price">₱170</span></span></label>
+                      <label class="chip chip--drink"><input type="radio" name="drink" value="matcha-latte" /><span class="chip__face">Matcha latte <span class="chip__price">₱170</span></span></label>
+                      <label class="chip chip--drink"><input type="radio" name="drink" value="dirty-matcha" /><span class="chip__face">Dirty matcha <span class="chip__price">₱185</span></span></label>
+                      <label class="chip chip--drink"><input type="radio" name="drink" value="tablea" /><span class="chip__face">Tablea hot chocolate <span class="chip__price">₱150</span></span></label>
+                      <label class="chip chip--drink"><input type="radio" name="drink" value="calamansi-soda" /><span class="chip__face">Calamansi soda <span class="chip__price">₱110</span></span></label>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="step" data-step="size">
+                <legend class="step__legend"><h2 class="text-h3">Size</h2></legend>
+                <div class="chips" data-sizes>
+                  <label class="chip"><input type="radio" name="size" value="12oz" checked /><span class="chip__face">12 oz <span class="chip__price">₱175</span></span></label>
+                  <label class="chip"><input type="radio" name="size" value="16oz" /><span class="chip__face">16 oz <span class="chip__price">₱195</span></span></label>
+                </div>
+                <p class="step__note" data-size-note hidden></p>
+              </fieldset>
+
+              <fieldset class="step" data-step="temp">
+                <legend class="step__legend"><h2 class="text-h3">Hot or iced</h2></legend>
+                <div class="chips" data-temps>
+                  <label class="chip"><input type="radio" name="temp" value="hot" /><span class="chip__face">Hot</span></label>
+                  <label class="chip"><input type="radio" name="temp" value="iced" checked /><span class="chip__face">Iced</span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="step" data-step="milk">
+                <legend class="step__legend"><h2 class="text-h3">Milk</h2></legend>
+                <div class="chips" data-milks>
+                  <label class="chip" data-milk="fresh"><input type="radio" name="milk" value="fresh" checked /><span class="chip__face">Fresh milk</span></label>
+                  <label class="chip" data-milk="oat"><input type="radio" name="milk" value="oat" /><span class="chip__face">Oat milk <span class="chip__price" data-addon="oat">+₱35</span></span></label>
+                  <label class="chip" data-milk="soy"><input type="radio" name="milk" value="soy" /><span class="chip__face">Soy milk <span class="chip__price" data-addon="soy">+₱30</span></span></label>
+                  <label class="chip" data-milk="none"><input type="radio" name="milk" value="none" /><span class="chip__face">No milk</span></label>
+                </div>
+                <p class="step__note" data-milk-note hidden></p>
+              </fieldset>
+
+              <fieldset class="step" data-step="sugar">
+                <legend class="step__legend"><h2 class="text-h3">Sugar</h2></legend>
+                <div class="chips">
+                  <label class="chip"><input type="radio" name="sugar" value="0" /><span class="chip__face tabular-nums">0%</span></label>
+                  <label class="chip"><input type="radio" name="sugar" value="25" /><span class="chip__face tabular-nums">25%</span></label>
+                  <label class="chip"><input type="radio" name="sugar" value="50" checked /><span class="chip__face tabular-nums">50%</span></label>
+                  <label class="chip"><input type="radio" name="sugar" value="75" /><span class="chip__face tabular-nums">75%</span></label>
+                  <label class="chip"><input type="radio" name="sugar" value="100" /><span class="chip__face tabular-nums">100%</span></label>
+                </div>
+                <p class="step__hint">0% is unsweetened. 100% is our regular sweetness.</p>
+              </fieldset>
+
+              <fieldset class="step" data-step="extras">
+                <legend class="step__legend"><h2 class="text-h3">Extras</h2></legend>
+                <div class="chips">
+                  <label class="chip chip--check" data-extra="shot"><input type="checkbox" name="extraShot" /><span class="chip__face"><span class="chip__box"><i data-icon="check"></i></span>Extra shot <span class="chip__price" data-addon="extraShot">+₱40</span></span></label>
+                  <label class="chip chip--check"><input type="checkbox" name="syrup" /><span class="chip__face"><span class="chip__box"><i data-icon="check"></i></span>Syrup <span class="chip__price" data-addon="syrup">+₱25</span></span></label>
+                </div>
+              </fieldset>
+
+              <div class="step flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
+                <p class="max-w-[36ch] text-muted" data-bag-hint>Ordering for more than one? Add this drink to your bag and build the next.</p>
+                <button type="button" class="btn btn-secondary gap-2" data-add-to-bag><i data-icon="bag" class="size-5"></i>Add to bag</button>
+              </div>
+
+              <fieldset class="step" data-step="branch">
+                <legend class="step__legend"><h2 class="text-h3">Branch</h2></legend>
+                <div class="picks" data-branch-picks>
+                  <label class="pick"><input type="radio" name="branch" value="it-park" checked /><span class="pick__face"><span class="pick__name">IT Park</span> <span class="pick__status">Open all night</span></span></label>
+                  <label class="pick"><input type="radio" name="branch" value="banilad" /><span class="pick__face"><span class="pick__name">Banilad</span> <span class="pick__status">7:00 AM to 10:00 PM</span></span></label>
+                  <label class="pick"><input type="radio" name="branch" value="capitol" /><span class="pick__face"><span class="pick__name">Capitol Site</span> <span class="pick__status">7:00 AM to 10:00 PM</span></span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="step" data-step="slot" aria-describedby="slot-hint slot-error">
+                <legend class="step__legend"><h2 class="text-h3">Pickup time</h2></legend>
+                <div class="chips chips--slots" data-slots data-pending></div>
+                <p class="step__hint" id="slot-hint" data-slot-hint>Ready times start 10 minutes from now.</p>
+                <p class="step__note mt-3" data-slot-note hidden></p>
+                <p class="field-error" id="slot-error" aria-live="polite" data-slot-error><i data-icon="warning-circle"></i><span data-msg></span></p>
+              </fieldset>
+
+              <fieldset class="step" data-step="payment" aria-describedby="payment-hint">
+                <legend class="step__legend"><h2 class="text-h3">Payment</h2></legend>
+                <div class="chips">
+                  <label class="chip"><input type="radio" name="payment" value="gcash" checked /><span class="chip__face">GCash</span></label>
+                  <label class="chip"><input type="radio" name="payment" value="maya" /><span class="chip__face">Maya</span></label>
+                  <label class="chip"><input type="radio" name="payment" value="card" /><span class="chip__face">Card</span></label>
+                </div>
+                <p class="step__hint" id="payment-hint">In the app you’d confirm in GCash, in Maya or with a saved card. This site takes no payment and never asks for card or account numbers.</p>
+              </fieldset>
+
+              <div class="step" data-step="name">
+                <h2 class="mb-4 text-h3"><label for="cup-name">Name for the cup</label></h2>
+                <input class="field" id="cup-name" name="name" type="text" autocomplete="given-name" autocapitalize="words" spellcheck="false" aria-describedby="name-help name-error" />
+                <p class="step__hint" id="name-help">Up to 16 characters, so it fits on the sleeve.</p>
+                <p class="field-error" id="name-error" hidden><i data-icon="warning-circle"></i><span data-msg></span></p>
+              </div>
+            </form>
+
+            <p class="sr-only" aria-live="polite" data-order-live></p>
+
+            <div class="contents lg:sticky lg:top-24 lg:col-span-4 lg:col-start-9 lg:block">
+              <div class="order-1 flex justify-center">
+                <svg class="cup h-40 w-auto lg:h-55" viewBox="0 0 200 280" width="200" height="280" aria-hidden="true" focusable="false" data-cup data-size="12oz" data-iced>
+                  <defs>
+                    <clipPath id="order-cup-clip"><path d="M34 54 L52.5 256 Q53 264 61 264 L139 264 Q147 264 147.5 256 L166 54 Z" /></clipPath>
+                  </defs>
+                  <g class="cup__body">
+                    <path class="cup__inside" d="M34 54 L52.5 256 Q53 264 61 264 L139 264 Q147 264 147.5 256 L166 54 Z" />
+                    <g clip-path="url(#order-cup-clip)">
+                      <rect class="cup__layer" x="20" y="0" width="160" height="280" style="transform: translateY(264px)" />
+                      <rect class="cup__layer" x="20" y="0" width="160" height="280" style="transform: translateY(264px)" />
+                      <rect class="cup__layer" x="20" y="0" width="160" height="280" style="transform: translateY(264px)" />
+                      <rect class="cup__layer" x="20" y="0" width="160" height="280" data-layer="salt-cream" style="transform: translateY(75px)" />
+                      <rect class="cup__layer" x="20" y="0" width="160" height="280" data-layer="milk" style="transform: translateY(122.25px)" />
+                      <rect class="cup__layer" x="20" y="0" width="160" height="280" data-layer="espresso" style="transform: translateY(216.75px)" />
+                      <g class="cup__ice">
+                        <g transform="rotate(-12 64 80)"><rect x="51" y="67" width="26" height="26" rx="5" /></g>
+                        <g transform="rotate(9 100 74)"><rect x="87" y="61" width="26" height="26" rx="5" /></g>
+                        <g transform="rotate(-6 134 84)"><rect x="121" y="71" width="26" height="26" rx="5" /></g>
+                        <g transform="rotate(14 80 108)"><rect x="67" y="95" width="26" height="26" rx="5" /></g>
+                        <g transform="rotate(-10 118 110)"><rect x="105" y="97" width="26" height="26" rx="5" /></g>
+                      </g>
+                    </g>
+                    <path class="cup__outline" d="M34 54 L52.5 256 Q53 264 61 264 L139 264 Q147 264 147.5 256 L166 54 Z" />
+                    <rect class="cup__rim" x="27" y="44" width="146" height="13" rx="6.5" />
+                    <path class="cup__sleeve" d="M38.3 128 L161.7 128 L155.9 192 L44.1 192 Z" />
+                    <text class="cup__name" x="100" y="167" text-anchor="middle" data-cup-name data-empty>Your name</text>
+                  </g>
+                </svg>
+              </div>
+
+              <div class="summary order-3" data-total>
+                <div class="summary__lines grid gap-1">
+                  <p class="summary__drink" data-summary-drink>Sea salt latte</p>
+                  <p class="summary__details text-sm text-muted" data-summary-details>12 oz, iced, fresh milk, 50% sugar</p>
+                  <p class="summary__pickup mt-1 flex items-center gap-2 text-sm max-lg:hidden"><i data-icon="clock"></i><span data-summary-pickup>Pickup at IT Park, time not picked yet</span></p>
+                </div>
+                <div class="summary__free" data-free hidden>
+                  <label class="flex min-h-11 cursor-pointer items-center gap-2.5 font-semibold"><input class="size-5 accent-accent" type="checkbox" name="free" form="order-form" /> <span>Use my free drink</span></label>
+                  <p class="summary__free-note pb-1.5 text-sm">Your stamp card has a free drink. It covers this whole order.</p>
+                </div>
+                <div class="summary__bag" data-bag-note hidden>
+                  <p class="text-sm" data-bag-note-text></p>
+                  <button type="button" class="btn btn-secondary gap-2" data-add-to-bag><i data-icon="bag" class="size-5"></i>Add to bag</button>
+                </div>
+                <p class="summary__total flex items-baseline justify-between gap-3 font-semibold max-lg:justify-start"><span>Total</span> <output class="text-total-sm font-bold tabular-nums lg:text-total" form="order-form" data-price>₱175</output></p>
+                <button class="summary__submit btn btn-primary lg:min-h-13 lg:w-full" type="submit" form="order-form" data-submit>Place order</button>
+              </div>
+
+              <section class="confirm order-4" data-ticket hidden tabindex="-1" aria-labelledby="ticket-title">
+                <div class="grid gap-1">
+                  <p class="flex items-center gap-2 font-semibold text-success"><i data-icon="check-circle"></i><span>Order placed</span></p>
+                  <h2 class="text-h3" id="ticket-title" data-ticket-title></h2>
+                </div>
+                <div>
+                  <p class="text-sm text-muted" data-ticket-label>Ready</p>
+                  <p class="mt-1 text-time font-bold tabular-nums" data-ticket-time></p>
+                  <p class="mt-1.5 text-sm" data-ticket-branch></p>
+                </div>
+                <div class="grid gap-1 border-y border-line py-4">
+                  <p class="flex justify-between gap-4 font-semibold"><span data-ticket-drink></span> <span class="tabular-nums" data-ticket-price></span></p>
+                  <p class="text-sm text-muted" data-ticket-details></p>
+                  <p class="mt-1 text-sm" data-ticket-payment></p>
+                </div>
+                <ol class="status" role="list" data-status>
+                  <li class="status__step" data-state="received"><span class="status__dot"><i data-icon="check"></i></span>Received</li>
+                  <li class="status__step" data-state="brewing"><span class="status__dot"><i data-icon="check"></i></span>Brewing</li>
+                  <li class="status__step" data-state="ready"><span class="status__dot"><i data-icon="check"></i></span>Ready</li>
+                </ol>
+                <p class="confirm__live min-h-[1.55em] font-semibold" data-ticket-live></p>
+                <div class="grid gap-2">
+                  <ol class="mini-card grid max-w-72 grid-cols-10 gap-1" role="list" aria-hidden="true" data-ticket-stamps>
+                    <li class="stamp-slot"></li>
+                    <li class="stamp-slot"></li>
+                    <li class="stamp-slot"></li>
+                    <li class="stamp-slot"></li>
+                    <li class="stamp-slot"></li>
+                    <li class="stamp-slot"></li>
+                    <li class="stamp-slot"></li>
+                    <li class="stamp-slot"></li>
+                    <li class="stamp-slot"></li>
+                    <li class="stamp-slot stamp-slot--free">Free</li>
+                  </ol>
+                  <p class="text-sm font-semibold" data-ticket-stamp-note></p>
+                </div>
+                <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
+                  <button type="button" class="btn btn-secondary" data-save-usual>Save as my usual</button>
+                  <button type="button" class="link inline-flex min-h-11 items-center" data-new-order>Start a new order</button>
+                </div>
+                <div class="grid gap-1">
+                  <p class="text-sm font-semibold" role="status" data-saved-note></p>
+                  <p class="text-sm text-muted">Nothing was sent, and nothing was charged.</p>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <section class="py-section" aria-labelledby="faq-title">
+        <div class="mx-auto grid max-w-page gap-8 px-gutter lg:grid-cols-12 lg:gap-x-6">
+          <h2 id="faq-title" class="text-h2 lg:sticky lg:top-24 lg:col-span-4 lg:self-start">Before you order</h2>
+          <div class="border-t border-ink lg:col-span-7 lg:col-start-6">
+            <details class="group border-b border-line">
+              <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-4 text-lg font-semibold hover:underline hover:underline-offset-4 [&::-webkit-details-marker]:hidden">How far ahead can I order?<i data-icon="caret-down" class="transition-transform group-open:rotate-180"></i></summary>
+              <p class="max-w-[60ch] pb-6">Pickup times start 10 minutes from now, every 5 minutes. Banilad and Capitol Site take their last pickup at 9:45 PM. IT Park takes orders all night.</p>
+            </details>
+            <details class="group border-b border-line">
+              <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-4 text-lg font-semibold hover:underline hover:underline-offset-4 [&::-webkit-details-marker]:hidden">Can I change the milk, sugar or size?<i data-icon="caret-down" class="transition-transform group-open:rotate-180"></i></summary>
+              <p class="max-w-[60ch] pb-6">Yes. Pick fresh, oat (<span class="tabular-nums">₱35</span>) or soy milk (<span class="tabular-nums">₱30</span>), sugar from 0 to 100%, and 12 oz or 16 oz. An extra shot is <span class="tabular-nums">₱40</span> and syrup is <span class="tabular-nums">₱25</span>.</p>
+            </details>
+            <details class="group border-b border-line">
+              <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-4 text-lg font-semibold hover:underline hover:underline-offset-4 [&::-webkit-details-marker]:hidden">What does saving my usual do?<i data-icon="caret-down" class="transition-transform group-open:rotate-180"></i></summary>
+              <p class="max-w-[60ch] pb-6">Save any order as your usual and it waits at the top of the order form next time, ready to reorder in one tap. It stays on this device.</p>
+            </details>
+            <details class="group border-b border-line">
+              <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-4 text-lg font-semibold hover:underline hover:underline-offset-4 [&::-webkit-details-marker]:hidden">How does the stamp card work?<i data-icon="caret-down" class="transition-transform group-open:rotate-180"></i></summary>
+              <p class="max-w-[60ch] pb-6">Each drink you order ahead adds a stamp. Nine stamps earn a free tenth drink, any size and any milk. On this site the card is saved in your browser, so clearing site data clears it.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- include components/footer.html -->
+  </body>
+</html>

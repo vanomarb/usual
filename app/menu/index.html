@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Menu: drinks, bites and add-ons at Usual</title>
+    <meta name="description" content="Usual’s menu: coffee, ube and matcha lattes, tablea, calamansi soda and bites, with 12 oz and 16 oz prices in pesos. Tap a drink to pick its size, milk, sugar and extras." />
+    <!-- include components/head.html -->
+    <link rel="preload" href="/node_modules/@fontsource-variable/hanken-grotesk/files/hanken-grotesk-latin-ext-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <script type="module" src="/main.ts"></script>
+  </head>
+  <body>
+    <!-- include components/header.html -->
+
+    <main id="main">
+      <section class="pt-8 pb-section sm:pt-12 lg:pt-14" id="menu" aria-labelledby="menu-title">
+        <div class="mx-auto max-w-page px-gutter">
+          <div class="grid gap-4 md:grid-cols-2 md:items-end md:gap-x-6">
+            <h1 id="menu-title" class="text-h1">Drinks, bites and add-ons</h1>
+            <p class="max-w-[46ch] text-muted">Drinks come in 12 oz or 16 oz unless noted, with sugar at 0, 25, 50, 75 or 100%. Tap a drink to pick its size, milk, sugar and extras and leave a note for the barista, or build it step by step on the order page.</p>
+          </div>
+
+          <div class="-mx-gutter mt-10 snap-x snap-mandatory scroll-px-gutter overflow-x-auto pt-1 pb-2 focus-visible:-outline-offset-2 md:mx-0 md:overflow-visible md:pb-1" role="region" aria-label="House favourites" tabindex="0">
+          <ul class="flex w-max gap-4 px-gutter md:grid md:w-auto md:grid-cols-3 md:gap-6 md:px-0" role="list">
+            <li class="w-[78vw] max-w-80 shrink-0 snap-start md:w-auto md:max-w-none">
+              <button type="button" class="fav-card" data-sheet-drink="spanish-latte" aria-haspopup="dialog" aria-labelledby="fav-spanish-latte-name fav-spanish-latte-price">
+                <span class="fav-card__photo"><img class="aspect-4/5 w-full object-cover" src="/photos/item-spanish-latte-640.webp" srcset="/photos/item-spanish-latte-640.webp 640w, /photos/item-spanish-latte-896.webp 896w" sizes="(min-width: 75rem) 357px, (min-width: 48rem) 30vw, 78vw" width="640" height="800" alt="An iced Spanish latte, espresso swirling into milk, in a clear takeaway cup with a flat lid and a paper straw, on a pale marble counter" fetchpriority="high" decoding="async" /></span>
+                <span class="mt-3 block font-semibold" id="fav-spanish-latte-name">Spanish latte</span>
+                <span class="mt-1 block font-semibold tabular-nums" id="fav-spanish-latte-price"><span class="font-normal text-muted">From</span> ₱165</span>
+              </button>
+            </li>
+            <li class="w-[78vw] max-w-80 shrink-0 snap-start md:w-auto md:max-w-none">
+              <button type="button" class="fav-card" data-sheet-drink="ube-latte" aria-haspopup="dialog" aria-labelledby="fav-ube-latte-name fav-ube-latte-price">
+                <span class="fav-card__photo"><img class="aspect-4/5 w-full object-cover" src="/photos/item-ube-latte-640.webp" srcset="/photos/item-ube-latte-640.webp 640w, /photos/item-ube-latte-896.webp 896w" sizes="(min-width: 75rem) 357px, (min-width: 48rem) 30vw, 78vw" width="640" height="800" alt="An iced ube latte, pale lavender over a deeper violet layer, in a clear takeaway cup with a flat lid and a paper straw, on a pale marble counter" decoding="async" /></span>
+                <span class="mt-3 block font-semibold" id="fav-ube-latte-name">Ube latte</span>
+                <span class="mt-1 block font-semibold tabular-nums" id="fav-ube-latte-price"><span class="font-normal text-muted">From</span> ₱170</span>
+              </button>
+            </li>
+            <li class="w-[78vw] max-w-80 shrink-0 snap-start md:w-auto md:max-w-none">
+              <button type="button" class="fav-card" data-sheet-drink="matcha-latte" aria-haspopup="dialog" aria-labelledby="fav-matcha-latte-name fav-matcha-latte-price">
+                <span class="fav-card__photo"><img class="aspect-4/5 w-full object-cover" src="/photos/item-matcha-latte-640.webp" srcset="/photos/item-matcha-latte-640.webp 640w, /photos/item-matcha-latte-896.webp 896w" sizes="(min-width: 75rem) 357px, (min-width: 48rem) 30vw, 78vw" width="640" height="800" alt="An iced matcha latte, green over white milk, in a clear takeaway cup with a flat lid and a paper straw, on a pale marble counter" decoding="async" /></span>
+                <span class="mt-3 block font-semibold" id="fav-matcha-latte-name">Matcha latte</span>
+                <span class="mt-1 block font-semibold tabular-nums" id="fav-matcha-latte-price"><span class="font-normal text-muted">From</span> ₱170</span>
+              </button>
+            </li>
+          </ul>
+          </div>
+
+          <div class="mt-16 grid gap-12 md:grid-cols-2 md:gap-x-12 lg:gap-x-20">
+            <div class="grid content-start gap-12">
+              <section aria-labelledby="menu-coffee">
+                <div class="border-b border-ink pb-2">
+                  <h2 id="menu-coffee" class="text-h3">Coffee</h2>
+                </div>
+                <ul role="list">
+                  <li class="border-b border-line">
+                    <button type="button" class="menu-item" data-sheet-drink="americano" aria-haspopup="dialog" aria-labelledby="item-americano-name item-americano-price" aria-describedby="item-americano-desc">
+                      <img class="size-16 rounded-thumb object-cover md:size-18" src="/photos/menu-americano-160.webp" srcset="/photos/menu-americano-160.webp 160w, /photos/menu-americano-320.webp 320w" sizes="(min-width: 48rem) 4.5rem, 4rem" width="160" height="160" alt="A black Americano in a white cup and saucer" loading="lazy" decoding="async" />
+                      <span class="min-w-0">
+                        <span class="block font-semibold" id="item-americano-name">Americano</span>
+                        <span class="mt-0.5 max-w-[46ch] text-md text-muted block" id="item-americano-desc" data-desc-for="americano">Two shots of espresso topped up with hot water.</span>
+                        <span class="mt-1.5 block font-semibold tabular-nums" id="item-americano-price"><span class="font-normal text-muted">From</span> ₱120</span>
+                      </span>
+                    </button>
+                  </li>
+                  <li class="border-b border-line">
+                    <button type="button" class="menu-item" data-sheet-drink="cafe-latte" aria-haspopup="dialog" aria-labelledby="item-cafe-latte-name item-cafe-latte-price" aria-describedby="item-cafe-latte-desc">
+                      <img class="size-16 rounded-thumb object-cover md:size-18" src="/photos/menu-cafe-latte-160.webp" srcset="/photos/menu-cafe-latte-160.webp 160w, /photos/menu-cafe-latte-320.webp 320w" sizes="(min-width: 48rem) 4.5rem, 4rem" width="160" height="160" alt="A café latte with a heart of latte art in a white cup and saucer" loading="lazy" decoding="async" />
+                      <span class="min-w-0">
+                        <span class="block font-semibold" id="item-cafe-latte-name">Café latte</span>
+                        <span class="mt-0.5 max-w-[46ch] text-md text-muted block" id="item-cafe-latte-desc" data-desc-for="cafe-latte">Espresso and steamed milk with a thin layer of foam.</span>
+                        <span class="mt-1.5 block font-semibold tabular-nums" id="item-cafe-latte-price"><span class="font-normal text-muted">From</span> ₱150</span>
+                      </span>
+                    </button>
+                  </li>
+                  <li class="border-b border-line">
+                    <button type="button" class="menu-item" data-sheet-drink="spanish-latte" aria-haspopup="dialog" aria-labelledby="item-spanish-latte-name item-spanish-latte-price" aria-describedby="item-spanish-latte-desc">
+                      <img class="size-16 rounded-thumb object-cover md:size-18" src="/photos/menu-spanish-latte-160.webp" srcset="/photos/menu-spanish-latte-160.webp 160w, /photos/menu-spanish-latte-320.webp 320w" sizes="(min-width: 48rem) 4.5rem, 4rem" width="160" height="160" alt="An iced Spanish latte, espresso swirling into milk, in a clear takeaway cup" loading="lazy" decoding="async" />
+                      <span class="min-w-0">
+                        <span class="block font-semibold" id="item-spanish-latte-name">Spanish latte</span>
+                        <span class="mt-0.5 max-w-[46ch] text-md text-muted block" id="item-spanish-latte-desc" data-desc-for="spanish-latte">Espresso, fresh milk and a spoon of condensed milk.</span>
+                        <span class="mt-1.5 block font-semibold tabular-nums" id="item-spanish-latte-price"><span class="font-normal text-muted">From</span> ₱165</span>
+                      </span>
+                    </button>
+                  </li>
+                  <li class="border-b border-line">
+                    <button type="button" class="menu-item" data-sheet-drink="sea-salt-latte" aria-haspopup="dialog" aria-labelledby="item-sea-salt-latte-name item-sea-salt-latte-price" aria-describedby="item-sea-salt-latte-desc">
+                      <img class="size-16 rounded-thumb object-cover md:size-18" src="/photos/menu-sea-salt-latte-160.webp" srcset="/photos/menu-sea-salt-latte-160.webp 160w, /photos/menu-sea-salt-latte-320.webp 320w" sizes="(min-width: 48rem) 4.5rem, 4rem" width="160" height="160" alt="An iced sea salt latte under a thick layer of cream, in a clear takeaway cup" loading="lazy" decoding="async" />
+                      <span class="min-w-0">
+                        <span class="block font-semibold" id="item-sea-salt-latte-name">Sea salt latte</span>
+                        <span class="mt-0.5 max-w-[46ch] text-md text-muted block" id="item-sea-salt-latte-desc" data-desc-for="sea-salt-latte">Espresso and milk under a lightly salted cream.</span>
+                        <span class="mt-1.5 block font-semibold tabular-nums" id="item-sea-salt-latte-price"><span class="font-normal text-muted">From</span> ₱175</span>
+                      </span>
+                    </button>
+                  </li>
+                  <li class="border-b border-line">
+                    <button type="button" class="menu-item" data-sheet-drink="cortado" aria-haspopup="dialog" aria-labelledby="item-cortado-name item-cortado-price" aria-describedby="item-cortado-desc">
+                      <img class="size-16 rounded-thumb object-cover md:size-18" src="/photos/menu-cortado-160.webp" srcset="/photos/menu-cortado-160.webp 160w, /photos/menu-cortado-320.webp 320w" sizes="(min-width: 48rem) 4.5rem, 4rem" width="160" height="160" alt="A cortado in a small white cup and saucer" loading="lazy" decoding="async" />
+                      <span class="min-w-0">
+                        <span class="block font-semibold" id="item-cortado-name">Cortado</span>
+                        <span class="mt-0.5 max-w-[46ch] text-md text-muted block" id="item-cortado-desc" data-desc-for="cortado">Espresso cut with the same amount of warm milk. Small and strong.</span>
+                        <span class="mt-1.5 block font-semibold tabular-nums" id="item-cortado-price">₱140</span>
+                      </span>
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" class="menu-item" data-sheet-drink="cold-brew" aria-haspopup="dialog" aria-labelledby="item-cold-brew-name item-cold-brew-price" aria-describedby="item-cold-brew-desc">
+                      <img class="size-16 rounded-thumb object-cover md:size-18" src="/photos/menu-cold-brew-160.webp" srcset="/photos/menu-cold-brew-160.webp 160w, /photos/menu-cold-brew-320.webp 320w" sizes="(min-width: 48rem) 4.5rem, 4rem" width="160" height="160" alt="Cold brew over ice in a clear takeaway cup" loading="lazy" decoding="async" />
+                      <span class="min-w-0">
+                        <span class="block font-semibold" id="item-cold-brew-name">Cold brew</span>
+                        <span class="mt-0.5 max-w-[46ch] text-md text-muted block" id="item-cold-brew-desc" data-desc-for="cold-brew">Steeped overnight in cold water, served over ice.</span>
+                        <span class="mt-1.5 block font-semibold tabular-nums" id="item-cold-brew-price"><span class="font-normal text-muted">From</span> ₱150</span>
+                      </span>
+                    </button>
+                  </li>
+                </ul>
+              </section>
+
+              <section aria-labelledby="menu-addons">
+                <div class="border-b border-ink pb-2">
+                  <h2 id="menu-addons" class="text-h3">Add-ons</h2>
+                </div>
+                <ul role="list">
+                  <li class="flex justify-between gap-4 border-b border-line py-2.5"><p class="font-semibold">Extra shot</p><p class="w-15 text-right font-semibold tabular-nums">₱40</p></li>
+                  <li class="flex justify-between gap-4 border-b border-line py-2.5"><p class="font-semibold">Oat milk</p><p class="w-15 text-right font-semibold tabular-nums">₱35</p></li>
+                  <li class="flex justify-between gap-4 border-b border-line py-2.5"><p class="font-semibold">Soy milk</p><p class="w-15 text-right font-semibold tabular-nums">₱30</p></li>
+                  <li class="flex justify-between gap-4 py-2.5"><p class="font-semibold">Syrup</p><p class="w-15 text-right font-semibold tabular-nums">₱25</p></li>
+                </ul>
+              </section>
+            </div>
+
+            <div class="grid content-start gap-12">
+              <section aria-labelledby="menu-not-coffee">
+                <div class="border-b border-ink pb-2">
+                  <h2 id="menu-not-coffee" class="text-h3">Not coffee</h2>
+                </div>
+                <ul role="list">
+                  <li class="border-b border-line">
+                    <button type="button" class="menu-item" data-sheet-drink="ube-latte" aria-haspopup="dialog" aria-labelledby="item-ube-latte-name item-ube-latte-price" aria-describedby="item-ube-latte-desc">
+                      <img class="size-16 rounded-thumb object-cover md:size-18" src="/photos/menu-ube-latte-160.webp" srcset="/photos/menu-ube-latte-160.webp 160w, /photos/menu-ube-latte-320.webp 320w" sizes="(min-width: 48rem) 4.5rem, 4rem" width="160" height="160" alt="An iced ube latte, pale lavender over a violet layer, in a clear takeaway cup" loading="lazy" decoding="async" />
+                      <span class="min-w-0">
+                        <span class="block font-semibold" id="item-ube-latte-name">Ube latte</span>
+                        <span class="mt-0.5 max-w-[46ch] text-md text-muted block" id="item-ube-latte-desc" data-desc-for="ube-latte">Purple yam blended into milk, sweet and a little earthy.</span>
+                        <span class="mt-1.5 block font-semibold tabular-nums" id="item-ube-latte-price"><span class="font-normal text-muted">From</span> ₱170</span>
+                      </span>
+                    </button>
+                  </li>
+                  <li class="border-b border-line">
+                    <button type="button" class="menu-item" data-sheet-drink="matcha-latte" aria-haspopup="dialog" aria-labelledby="item-matcha-latte-name item-matcha-latte-price" aria-describedby="item-matcha-latte-desc">
+                      <img class="size-16 rounded-thumb object-cover md:size-18" src="/photos/menu-matcha-latte-160.webp" srcset="/photos/menu-matcha-latte-160.webp 160w, /photos/menu-matcha-latte-320.webp 320w" sizes="(min-width: 48rem) 4.5rem, 4rem" width="160" height="160" alt="An iced matcha latte, green over white milk, in a clear takeaway cup" loading="lazy" decoding="async" />
+                      <span class="min-w-0">
+                        <span class="block font-semibold" id="item-matcha-latte-name">Matcha latte</span>
+                        <span class="mt-0.5 max-w-[46ch] text-md text-muted block" id="item-matcha-latte-desc" data-desc-for="matcha-latte">Matcha whisked smooth, then poured over milk.</span>
+                        <span class="mt-1.5 block font-semibold tabular-nums" id="item-matcha-latte-price"><span class="font-normal text-muted">From</span> ₱170</span>
+                      </span>
+                    </button>
+                  </li>
+                  <li class="border-b border-line">
+                    <button type="button" class="menu-item" data-sheet-drink="dirty-matcha" aria-haspopup="dialog" aria-labelledby="item-dirty-matcha-name item-dirty-matcha-price" aria-describedby="item-dirty-matcha-desc">
+                      <img class="size-16 rounded-thumb object-cover md:size-18" src="/photos/menu-dirty-matcha-160.webp" srcset="/photos/menu-dirty-matcha-160.webp 160w, /photos/menu-dirty-matcha-320.webp 320w" sizes="(min-width: 48rem) 4.5rem, 4rem" width="160" height="160" alt="An iced dirty matcha in three layers of milk, matcha and espresso, in a clear takeaway cup" loading="lazy" decoding="async" />
+                      <span class="min-w-0">
+                        <span class="block font-semibold" id="item-dirty-matcha-name">Dirty matcha</span>
+                        <span class="mt-0.5 max-w-[46ch] text-md text-muted block" id="item-dirty-matcha-desc" data-desc-for="dirty-matcha">A matcha latte with a shot of espresso on top.</span>
+                        <span class="mt-1.5 block font-semibold tabular-nums" id="item-dirty-matcha-price"><span class="font-normal text-muted">From</span> ₱185</span>
+                      </span>
+                    </button>
+                  </li>
+                  <li class="border-b border-line">
+                    <button type="button" class="menu-item" data-sheet-drink="tablea" aria-haspopup="dialog" aria-labelledby="item-tablea-name item-tablea-price" aria-describedby="item-tablea-desc">
+                      <img class="size-16 rounded-thumb object-cover md:size-18" src="/photos/menu-tablea-160.webp" srcset="/photos/menu-tablea-160.webp 160w, /photos/menu-tablea-320.webp 320w" sizes="(min-width: 48rem) 4.5rem, 4rem" width="160" height="160" alt="A thick tablea hot chocolate in a white cup and saucer" loading="lazy" decoding="async" />
+                      <span class="min-w-0">
+                        <span class="block font-semibold" id="item-tablea-name">Tablea hot chocolate</span>
+                        <span class="mt-0.5 max-w-[46ch] text-md text-muted block" id="item-tablea-desc" data-desc-for="tablea">Cebu tablea melted into hot milk. Thick, and not too sweet.</span>
+                        <span class="mt-1.5 block font-semibold tabular-nums" id="item-tablea-price"><span class="font-normal text-muted">From</span> ₱150</span>
+                      </span>
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" class="menu-item" data-sheet-drink="calamansi-soda" aria-haspopup="dialog" aria-labelledby="item-calamansi-soda-name item-calamansi-soda-price" aria-describedby="item-calamansi-soda-desc">
+                      <img class="size-16 rounded-thumb object-cover md:size-18" src="/photos/menu-calamansi-soda-160.webp" srcset="/photos/menu-calamansi-soda-160.webp 160w, /photos/menu-calamansi-soda-320.webp 320w" sizes="(min-width: 48rem) 4.5rem, 4rem" width="160" height="160" alt="A calamansi soda with ice and halved calamansi in a clear takeaway cup" loading="lazy" decoding="async" />
+                      <span class="min-w-0">
+                        <span class="block font-semibold" id="item-calamansi-soda-name">Calamansi soda</span>
+                        <span class="mt-0.5 max-w-[46ch] text-md text-muted block" id="item-calamansi-soda-desc" data-desc-for="calamansi-soda">Calamansi juice and sparkling water over ice.</span>
+                        <span class="mt-1.5 block font-semibold tabular-nums" id="item-calamansi-soda-price"><span class="font-normal text-muted">From</span> ₱110</span>
+                      </span>
+                    </button>
+                  </li>
+                </ul>
+              </section>
+
+              <section aria-labelledby="menu-bites">
+                <div class="border-b border-ink pb-2">
+                  <h2 id="menu-bites" class="text-h3">Bites</h2>
+                </div>
+                <ul role="list">
+                  <li class="border-b border-line">
+                    <button type="button" class="menu-item" data-sheet-bite="ensaymada" aria-haspopup="dialog" aria-labelledby="item-ensaymada-name item-ensaymada-price" aria-describedby="item-ensaymada-desc">
+                      <img class="size-16 rounded-thumb object-cover md:size-18" src="/photos/menu-ensaymada-160.webp" srcset="/photos/menu-ensaymada-160.webp 160w, /photos/menu-ensaymada-320.webp 320w" sizes="(min-width: 48rem) 4.5rem, 4rem" width="160" height="160" alt="An ensaymada topped with sugar and grated cheese, on a white plate" loading="lazy" decoding="async" />
+                      <span class="min-w-0">
+                        <span class="block font-semibold" id="item-ensaymada-name">Ensaymada</span>
+                        <span class="mt-0.5 max-w-[46ch] text-md text-muted block" id="item-ensaymada-desc" data-desc-for="ensaymada">A soft, buttery roll topped with sugar and grated cheese.</span>
+                        <span class="mt-1.5 block font-semibold tabular-nums" id="item-ensaymada-price">₱85</span>
+                      </span>
+                    </button>
+                  </li>
+                  <li class="border-b border-line">
+                    <button type="button" class="menu-item" data-sheet-bite="banana-bread" aria-haspopup="dialog" aria-labelledby="item-banana-bread-name item-banana-bread-price" aria-describedby="item-banana-bread-desc">
+                      <img class="size-16 rounded-thumb object-cover md:size-18" src="/photos/menu-banana-bread-160.webp" srcset="/photos/menu-banana-bread-160.webp 160w, /photos/menu-banana-bread-320.webp 320w" sizes="(min-width: 48rem) 4.5rem, 4rem" width="160" height="160" alt="Two thick slices of banana bread on a white plate" loading="lazy" decoding="async" />
+                      <span class="min-w-0">
+                        <span class="block font-semibold" id="item-banana-bread-name">Banana bread</span>
+                        <span class="mt-0.5 max-w-[46ch] text-md text-muted block" id="item-banana-bread-desc" data-desc-for="banana-bread">A thick slice, made with very ripe bananas.</span>
+                        <span class="mt-1.5 block font-semibold tabular-nums" id="item-banana-bread-price">₱95</span>
+                      </span>
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" class="menu-item" data-sheet-bite="cheese-pandesal" aria-haspopup="dialog" aria-labelledby="item-cheese-pandesal-name item-cheese-pandesal-price" aria-describedby="item-cheese-pandesal-desc">
+                      <img class="size-16 rounded-thumb object-cover md:size-18" src="/photos/menu-cheese-pandesal-160.webp" srcset="/photos/menu-cheese-pandesal-160.webp 160w, /photos/menu-cheese-pandesal-320.webp 320w" sizes="(min-width: 48rem) 4.5rem, 4rem" width="160" height="160" alt="Three cheese pandesal, one torn open to show the cheese, on a white plate" loading="lazy" decoding="async" />
+                      <span class="min-w-0">
+                        <span class="block font-semibold" id="item-cheese-pandesal-name">Cheese pandesal, 3 pieces</span>
+                        <span class="mt-0.5 max-w-[46ch] text-md text-muted block" id="item-cheese-pandesal-desc" data-desc-for="cheese-pandesal">Warm pandesal with melted cheese inside.</span>
+                        <span class="mt-1.5 block font-semibold tabular-nums" id="item-cheese-pandesal-price">₱75</span>
+                      </span>
+                    </button>
+                  </li>
+                </ul>
+              </section>
+
+              <section aria-labelledby="menu-sugar">
+                <div class="border-b border-ink pb-2">
+                  <h2 id="menu-sugar" class="text-h3">Sugar</h2>
+                </div>
+                <p class="py-3.5 font-semibold tabular-nums">0%, 25%, 50%, 75% or 100%</p>
+                <p class="text-md text-muted">Any drink, any level. 0% is unsweetened. 100% is our regular sweetness.</p>
+              </section>
+            </div>
+          </div>
+
+          <div class="mt-16 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-line pt-8">
+            <a class="btn btn-primary" href="%BASE_URL%order/">Order ahead</a>
+            <p class="text-muted">Pick a branch and a time, and we write your name on the cup.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- include components/footer.html -->
+  </body>
+</html>

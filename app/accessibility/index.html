@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Accessibility: Usual</title>
+    <meta name="description" content="How Usual makes ordering ahead work for everyone: keyboard and screen reader support, contrast, motion and text size, the limits we know about, and how to tell us." />
+    <!-- include components/head.html -->
+    <script type="module" src="/main.ts"></script>
+  </head>
+  <body>
+    <!-- include components/header.html -->
+
+    <main id="main">
+      <article class="mx-auto max-w-page px-gutter pt-8 pb-section sm:pt-12 lg:pt-14" aria-labelledby="a11y-title">
+        <h1 id="a11y-title" class="text-h1">Accessibility</h1>
+        <p class="mt-4 text-muted">Last reviewed 18 November 2026</p>
+
+        <div class="doc mt-8">
+          <p>Ordering a coffee should be easy for everyone. We aim for this site to meet the Web Content Accessibility Guidelines (WCAG) 2.2 at level AA, and we test it with a keyboard, a screen reader and at 200% text size.</p>
+
+          <h2>What we have done</h2>
+          <ul>
+            <li>Every step of ordering, checkout, sign-in and the forms works with a keyboard. In the order builder, Enter or Space confirms a choice and moves you to the next step.</li>
+            <li>A “Skip to content” link is the first thing on every page, and focus is always shown with a clear outline.</li>
+            <li>Text meets a contrast ratio of at least 4.5:1, and controls and their borders at least 3:1.</li>
+            <li>Order status, bag changes and form errors are announced to screen readers. Errors are written out next to the field, not shown by colour alone.</li>
+            <li>Buttons and choices are at least 44 by 44 pixels.</li>
+            <li>If you ask your device to reduce motion, the site turns off its animations.</li>
+            <li>Pages reflow to a single column on narrow screens and when text is enlarged, without scrolling sideways.</li>
+          </ul>
+
+          <h2>What we know isn’t perfect</h2>
+          <ul>
+            <li>The picture of the app on the home page is described as one image rather than as two working screens.</li>
+            <li>Pickup times refresh while the page is open. If a time you picked runs out, the page says so and asks you to choose another.</li>
+          </ul>
+
+          <h2>Tell us what isn’t working</h2>
+          <p>If anything on the site is hard to use, write to us through the <a href="%BASE_URL%contact/">contact form</a> and choose “Accessibility” as the topic. We aim to reply within five working days.</p>
+          <p>This is a demonstration site, so on it the form sends nothing; the commitments above describe how the running business would respond.</p>
+        </div>
+      </article>
+    </main>
+
+    <!-- include components/footer.html -->
+  </body>
+</html>

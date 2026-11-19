@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sign in to Usual</title>
+    <meta name="description" content="Sign in to Usual with your first name, your email or mobile number and a one-time code, and keep your stamp card and your saved usual. No password needed." />
+    <!-- include components/head.html -->
+    <link rel="preload" href="/node_modules/@fontsource-variable/hanken-grotesk/files/hanken-grotesk-latin-ext-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <script type="module" src="/main.ts"></script>
+  </head>
+  <body>
+    <!-- include components/header.html -->
+
+    <!-- The page is at least a screen tall, so the footer stays below the fold while the script picks a view. -->
+    <main id="main" class="min-h-svh">
+      <section class="mx-auto max-w-page px-gutter pt-8 pb-section sm:pt-12 lg:pt-14" aria-labelledby="account-title">
+        <h1 id="account-title" class="text-h1">Your account</h1>
+        <noscript><p class="mt-6 max-w-[48ch] text-lg">Signing in runs in your browser and needs JavaScript. You can still <a class="link" href="%BASE_URL%menu/">read the menu</a>.</p></noscript>
+
+        <div class="mt-10 grid gap-x-6 gap-y-10 lg:grid-cols-12" data-signin hidden>
+          <svg class="cup h-28 w-auto justify-self-start lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:h-44" viewBox="0 0 200 280" width="200" height="280" aria-hidden="true" focusable="false" data-size="16oz" data-signin-cup>
+            <g class="cup__body">
+              <path class="cup__inside" d="M34 54 L52.5 256 Q53 264 61 264 L139 264 Q147 264 147.5 256 L166 54 Z" />
+              <path class="cup__outline" d="M34 54 L52.5 256 Q53 264 61 264 L139 264 Q147 264 147.5 256 L166 54 Z" />
+              <rect class="cup__rim" x="27" y="44" width="146" height="13" rx="6.5" />
+              <path class="cup__sleeve" d="M38.3 128 L161.7 128 L155.9 192 L44.1 192 Z" />
+              <text class="cup__name" x="100" y="167" text-anchor="middle" data-empty>Your name</text>
+            </g>
+          </svg>
+
+          <div class="lg:col-span-6 lg:row-span-2 lg:row-start-1">
+            <form class="max-w-md" data-signin-form novalidate aria-labelledby="signin-title">
+              <h2 id="signin-title" class="text-h3">What name goes on the cup?</h2>
+              <p class="mt-2 text-muted">No password. Just your name and a quick code, and your stamps come with you.</p>
+              <div class="mt-6 grid gap-5">
+                <div>
+                  <label class="font-semibold" for="signin-name">First name</label>
+                  <input class="field mt-2" id="signin-name" name="firstName" type="text" autocomplete="given-name" autocapitalize="words" spellcheck="false" aria-describedby="signin-name-error" />
+                  <p class="field-error" id="signin-name-error" hidden><i data-icon="warning-circle"></i><span data-msg></span></p>
+                </div>
+                <fieldset>
+                  <legend class="font-semibold">Send my code by</legend>
+                  <div class="chips mt-2" data-contact-via>
+                    <label class="chip"><input type="radio" name="via" value="email" checked /><span class="chip__face">Email</span></label>
+                    <label class="chip"><input type="radio" name="via" value="mobile" /><span class="chip__face">Text</span></label>
+                  </div>
+                </fieldset>
+                <div>
+                  <label class="font-semibold" for="signin-contact" data-contact-label>Email address</label>
+                  <input class="field mt-2" id="signin-contact" name="contact" type="email" autocomplete="email" spellcheck="false" aria-describedby="signin-contact-hint signin-contact-error" data-contact-input />
+                  <p class="step__hint" id="signin-contact-hint" data-contact-hint>For example lea@example.com.</p>
+                  <p class="field-error" id="signin-contact-error" hidden><i data-icon="warning-circle"></i><span data-msg></span></p>
+                </div>
+              </div>
+              <button class="btn btn-primary mt-7" type="submit">Send my code</button>
+            </form>
+
+            <form class="max-w-md" data-code-form novalidate hidden tabindex="-1" aria-labelledby="code-title">
+              <h2 id="code-title" class="text-h3" data-code-title>Here’s your code</h2>
+              <p class="mt-2" data-code-sent></p>
+              <div class="mt-5 rounded-surface bg-accent-wash px-5 py-4">
+                <p class="text-sm font-semibold">Your code</p>
+                <p class="mt-1 text-time tracking-[0.2em] tabular-nums" data-demo-code></p>
+              </div>
+              <div class="mt-6">
+                <label class="font-semibold" for="signin-code">Your 4-digit code</label>
+                <input class="field mt-2 max-w-40 text-lg tracking-[0.3em] tabular-nums" id="signin-code" name="code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="4" aria-describedby="signin-code-error" />
+                <p class="field-error" id="signin-code-error" hidden><i data-icon="warning-circle"></i><span data-msg></span></p>
+              </div>
+              <div class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
+                <button class="btn btn-primary" type="submit">Sign in</button>
+                <button type="button" class="link inline-flex min-h-11 items-center" data-code-back>Change my details</button>
+              </div>
+            </form>
+          </div>
+
+          <aside class="lg:col-span-5 lg:col-start-8 lg:row-start-2" aria-labelledby="perks-title">
+            <h2 id="perks-title" class="text-h3">With an account</h2>
+            <ul class="mt-5 grid gap-5" role="list">
+              <li class="flex gap-4 border-t border-line pt-5"><i data-icon="stamp" class="size-6 shrink-0"></i><span><span class="block font-semibold">Stamps you can’t leave at home</span><span class="text-muted">Every drink you order ahead adds one. Nine, and the tenth is free.</span></span></li>
+              <li class="flex gap-4 border-t border-line pt-5"><i data-icon="coffee" class="size-6 shrink-0"></i><span><span class="block font-semibold">Reorder your usual in one tap</span><span class="text-muted">Save the drink you always get, then add it to your bag from here.</span></span></li>
+              <li class="flex gap-4 border-t border-line pt-5"><i data-icon="lock-simple" class="size-6 shrink-0"></i><span><span class="block font-semibold">No password to forget</span><span class="text-muted">A fresh code each time you sign in.</span></span></li>
+            </ul>
+          </aside>
+        </div>
+
+        <div class="mt-10 grid gap-12 lg:grid-cols-12 lg:gap-x-6" data-signed-in hidden tabindex="-1">
+          <div class="lg:col-span-6">
+            <h2 class="text-h2" data-greeting>Hi</h2>
+            <p class="mt-2 text-muted" data-signed-in-as></p>
+
+            <section class="mt-8 rounded-surface border border-line bg-surface p-6" aria-labelledby="account-usual-title">
+              <h3 id="account-usual-title" class="font-semibold">Your usual</h3>
+              <div data-account-usual hidden>
+                <p class="mt-1 text-lg font-semibold" data-account-usual-drink></p>
+                <p class="text-sm text-muted" data-account-usual-details></p>
+                <div class="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3">
+                  <button type="button" class="btn btn-primary gap-2" data-account-usual-add><i data-icon="bag" class="size-5"></i>Add to bag</button>
+                  <a class="link inline-flex min-h-11 items-center" href="%BASE_URL%order/">Change it on the order page</a>
+                </div>
+              </div>
+              <div data-account-no-usual>
+                <p class="mt-1 text-muted">Nothing saved yet. After your next order, tap “Save as my usual”.</p>
+                <a class="btn btn-secondary mt-5" href="%BASE_URL%order/">Order ahead</a>
+              </div>
+            </section>
+
+            <button type="button" class="btn btn-secondary mt-8 max-lg:hidden" data-sign-out>Sign out</button>
+          </div>
+
+          <div class="lg:col-span-5 lg:col-start-8" data-stamp-card>
+            <div class="max-w-md rounded-surface border border-line bg-surface p-6 sm:p-8">
+              <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
+                <h3 class="flex items-center gap-2 font-semibold"><span class="stamp-mark" aria-hidden="true">u</span>Your stamp card</h3>
+                <p class="text-sm text-muted tabular-nums" data-stamp-progress>0 of 9 stamps</p>
+              </div>
+              <ol class="mt-7 grid w-fit grid-cols-5 gap-x-3 gap-y-4" role="list" aria-hidden="true" data-stamp-slots>
+                <li class="stamp-slot"></li>
+                <li class="stamp-slot"></li>
+                <li class="stamp-slot"></li>
+                <li class="stamp-slot"></li>
+                <li class="stamp-slot"></li>
+                <li class="stamp-slot"></li>
+                <li class="stamp-slot"></li>
+                <li class="stamp-slot"></li>
+                <li class="stamp-slot"></li>
+                <li class="stamp-slot stamp-slot--free">Free</li>
+              </ol>
+              <p class="mt-7 min-h-[2lh] text-sm" data-stamp-note>No stamps yet. Your first drink ordered ahead adds one.</p>
+            </div>
+            <a class="link mt-4 inline-flex min-h-11 items-center" href="%BASE_URL%rewards/">How rewards work</a>
+          </div>
+          <!-- On phones Sign out comes last, after the stamp card; from 60 rem it sits under the usual above. -->
+          <div class="lg:hidden">
+            <button type="button" class="btn btn-secondary" data-sign-out>Sign out</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- include components/footer.html -->
+  </body>
+</html>

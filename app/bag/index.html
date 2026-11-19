@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Your bag: Usual</title>
+    <meta name="description" content="Your Usual order bag: change quantities, pick a branch and a pickup time, and choose GCash, Maya or card." />
+    <!-- include components/head.html -->
+    <link rel="preload" href="/node_modules/@fontsource-variable/hanken-grotesk/files/hanken-grotesk-latin-ext-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <script type="module" src="/main.ts"></script>
+  </head>
+  <body>
+    <!-- include components/header.html -->
+
+    <!-- The page is at least a screen tall, so the footer stays below the fold while the script fills the bag. -->
+    <main id="main" class="min-h-svh">
+      <section class="mx-auto max-w-page px-gutter pt-8 pb-section sm:pt-12 lg:pt-14" aria-labelledby="bag-title" data-bag>
+        <h1 id="bag-title" class="text-h1 focus:outline-none" tabindex="-1">Your bag</h1>
+        <noscript><p class="mt-6 max-w-[48ch] text-lg">The bag runs in your browser and needs JavaScript. You can still <a class="link" href="%BASE_URL%menu/">read the menu</a>.</p></noscript>
+        <p class="sr-only" aria-live="polite" data-bag-live></p>
+
+        <div class="mt-8" data-bag-empty hidden>
+          <p class="text-lg">Your bag is empty.</p>
+          <p class="mt-2 max-w-[48ch] text-muted">Add a drink or a bite from the menu, or build a drink your way.</p>
+          <div class="mt-7 flex flex-wrap items-center gap-x-7 gap-y-3">
+            <a class="btn btn-primary" href="%BASE_URL%menu/">See the menu</a>
+            <a class="link inline-flex min-h-11 items-center" href="%BASE_URL%order/">Build a drink</a>
+          </div>
+        </div>
+
+        <div class="mt-10 grid gap-12 lg:grid-cols-12 lg:items-start lg:gap-x-6" data-bag-full hidden>
+          <div class="min-w-0 lg:col-span-7">
+            <h2 class="text-h3">Items</h2>
+            <ul class="mt-4 border-t border-ink" role="list" data-bag-lines></ul>
+            <a class="link mt-4 inline-flex min-h-11 items-center" href="%BASE_URL%menu/">Add something else</a>
+
+            <form class="mt-12" id="checkout-form" novalidate aria-labelledby="checkout-title">
+              <h2 id="checkout-title" class="text-h2">Checkout</h2>
+              <fieldset class="step" data-step="branch">
+                <legend class="step__legend"><h3 class="text-h3">Branch</h3></legend>
+                <div class="picks" data-branch-picks>
+                  <label class="pick"><input type="radio" name="branch" value="it-park" checked /><span class="pick__face"><span class="pick__name">IT Park</span> <span class="pick__status">Open all night</span></span></label>
+                  <label class="pick"><input type="radio" name="branch" value="banilad" /><span class="pick__face"><span class="pick__name">Banilad</span> <span class="pick__status">7:00 AM to 10:00 PM</span></span></label>
+                  <label class="pick"><input type="radio" name="branch" value="capitol" /><span class="pick__face"><span class="pick__name">Capitol Site</span> <span class="pick__status">7:00 AM to 10:00 PM</span></span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="step" data-step="slot" aria-describedby="bag-slot-hint bag-slot-error">
+                <legend class="step__legend"><h3 class="text-h3">Pickup time</h3></legend>
+                <div class="chips chips--slots" data-slots data-pending></div>
+                <p class="step__hint" id="bag-slot-hint" data-slot-hint>Ready times start 10 minutes from now.</p>
+                <p class="step__note mt-3" data-slot-note hidden></p>
+                <p class="field-error" id="bag-slot-error" aria-live="polite" data-slot-error><i data-icon="warning-circle"></i><span data-msg></span></p>
+              </fieldset>
+
+              <fieldset class="step" data-step="payment" aria-describedby="bag-payment-hint">
+                <legend class="step__legend"><h3 class="text-h3">Payment</h3></legend>
+                <div class="chips">
+                  <label class="chip"><input type="radio" name="payment" value="gcash" checked /><span class="chip__face">GCash</span></label>
+                  <label class="chip"><input type="radio" name="payment" value="maya" /><span class="chip__face">Maya</span></label>
+                  <label class="chip"><input type="radio" name="payment" value="card" /><span class="chip__face">Card</span></label>
+                </div>
+                <p class="step__hint" id="bag-payment-hint">In the app you’d confirm in GCash, in Maya or with a saved card. This site takes no payment and never asks for card or account numbers.</p>
+              </fieldset>
+
+              <div class="step" data-step="name">
+                <h3 class="mb-4 text-h3"><label for="bag-name" data-name-label>Name for the cups</label></h3>
+                <input class="field" id="bag-name" name="name" type="text" autocomplete="given-name" autocapitalize="words" spellcheck="false" aria-describedby="bag-name-help bag-name-error" />
+                <p class="step__hint" id="bag-name-help" data-name-help>Up to 16 characters, so it fits on the sleeve.</p>
+                <p class="field-error" id="bag-name-error" hidden><i data-icon="warning-circle"></i><span data-msg></span></p>
+              </div>
+            </form>
+          </div>
+
+          <aside class="rounded-surface border border-line bg-surface p-6 lg:sticky lg:top-24 lg:col-span-4 lg:col-start-9" aria-labelledby="summary-title">
+            <h2 id="summary-title" class="text-h3">Order summary</h2>
+            <dl class="mt-5 grid gap-2">
+              <div class="flex justify-between gap-4"><dt data-bag-count-label>Items</dt><dd class="tabular-nums" data-bag-subtotal></dd></div>
+              <div class="flex justify-between gap-4 text-success" data-bag-discount-row hidden><dt>Free drink</dt><dd class="tabular-nums" data-bag-discount></dd></div>
+              <div class="mt-2 flex items-baseline justify-between gap-4 border-t border-line pt-3 font-semibold"><dt>Total</dt><dd class="text-total-sm font-bold tabular-nums" data-bag-total></dd></div>
+            </dl>
+            <div class="mt-4 rounded-control bg-accent-wash px-3 py-1" data-bag-free hidden>
+              <label class="flex min-h-11 cursor-pointer items-center gap-2.5 font-semibold"><input class="size-5 accent-accent" type="checkbox" name="free" form="checkout-form" /> <span>Use my free drink</span></label>
+            </div>
+            <button class="btn btn-primary mt-6 w-full lg:min-h-13" type="submit" form="checkout-form">Place order</button>
+            <p class="mt-3 text-sm text-muted">Nothing is charged on this demonstration site.</p>
+          </aside>
+        </div>
+
+        <section class="mt-10 grid max-w-xl gap-5 rounded-surface border border-line bg-surface p-6 sm:p-8" data-bag-done hidden tabindex="-1" aria-labelledby="done-title">
+          <div class="grid gap-1">
+            <p class="flex items-center gap-2 font-semibold text-success"><i data-icon="check-circle"></i><span>Order placed</span></p>
+            <h2 class="text-h3" id="done-title" data-done-title></h2>
+          </div>
+          <div>
+            <p class="text-sm text-muted" data-done-label>Ready</p>
+            <p class="mt-1 text-time font-bold tabular-nums" data-done-time></p>
+            <p class="mt-1.5 text-sm" data-done-branch></p>
+          </div>
+          <ul class="grid gap-1.5 border-y border-line py-4" role="list" data-done-lines></ul>
+          <p class="flex justify-between gap-4 font-semibold"><span>Total</span><span class="tabular-nums" data-done-total></span></p>
+          <p class="text-sm" data-done-payment></p>
+          <p class="text-sm font-semibold" data-done-stamps></p>
+          <div class="flex flex-wrap items-center gap-x-7 gap-y-3">
+            <a class="btn btn-secondary" href="%BASE_URL%menu/">Back to the menu</a>
+            <a class="link inline-flex min-h-11 items-center" href="%BASE_URL%rewards/">See your stamp card</a>
+          </div>
+          <p class="text-sm text-muted">Nothing was sent, and nothing was charged.</p>
+        </section>
+
+        <template data-line-template>
+          <li class="grid grid-cols-[3.5rem_minmax(0,1fr)_auto] items-center gap-x-4 gap-y-3 border-b border-line py-4">
+            <img class="row-span-2 size-14 self-start rounded-thumb object-cover" width="160" height="160" alt="" sizes="3.5rem" decoding="async" data-line-photo />
+            <div class="min-w-0">
+              <p class="font-semibold" data-line-name></p>
+              <p class="text-sm text-muted" data-line-details></p>
+              <p class="mt-0.5 text-sm text-ink" data-line-note hidden></p>
+            </div>
+            <p class="text-right font-semibold tabular-nums" data-line-total></p>
+            <div class="col-span-2 flex flex-wrap items-center gap-x-5 gap-y-2">
+              <div class="qty">
+                <button type="button" data-qty-minus><i data-icon="minus" class="size-5"></i></button>
+                <output data-qty></output>
+                <button type="button" data-qty-plus><i data-icon="plus" class="size-5"></i></button>
+              </div>
+              <button type="button" class="link inline-flex min-h-11 items-center gap-1.5 text-sm" data-line-remove><i data-icon="trash" class="size-4.5"></i>Remove</button>
+            </div>
+          </li>
+        </template>
+      </section>
+    </main>
+
+    <!-- include components/footer.html -->
+  </body>
+</html>

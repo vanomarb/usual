@@ -1,0 +1,106 @@
+<footer class="bg-accent-wash text-ink">
+  <div class="mx-auto max-w-page px-gutter pt-12 pb-8 sm:pt-14">
+    <h2 class="sr-only">Branches</h2>
+    <ul class="grid gap-x-6 gap-y-7 md:grid-cols-3" role="list">
+      <li class="border-t border-ink pt-4">
+        <h3 class="text-h3">IT Park</h3>
+        <p class="mt-1 text-muted">Open 24 hours</p>
+        <div class="mt-2 min-h-[1lh] md:min-h-[2lh] lg:min-h-[1lh]" data-branch-status="it-park"></div>
+      </li>
+      <li class="border-t border-ink pt-4">
+        <h3 class="text-h3">Banilad</h3>
+        <p class="mt-1 text-muted">7:00 AM to 10:00 PM</p>
+        <div class="mt-2 min-h-[1lh] md:min-h-[2lh] lg:min-h-[1lh]" data-branch-status="banilad"></div>
+      </li>
+      <li class="border-t border-ink pt-4">
+        <h3 class="text-h3">Capitol Site</h3>
+        <p class="mt-1 text-muted">7:00 AM to 10:00 PM</p>
+        <div class="mt-2 min-h-[1lh] md:min-h-[2lh] lg:min-h-[1lh]" data-branch-status="capitol"></div>
+      </li>
+    </ul>
+
+    <nav class="mt-12 grid gap-y-1 border-t border-line-strong pt-5" aria-label="Footer">
+      <div class="grid grid-cols-[6.5rem_minmax(0,1fr)] items-start gap-x-4 sm:grid-cols-[8rem_minmax(0,1fr)]">
+        <h2 id="footer-order" class="flex min-h-11 items-center text-sm font-semibold text-muted">Order</h2>
+        <ul class="flex flex-wrap gap-x-6" role="list" aria-labelledby="footer-order">
+          <li><a class="footer-link" href="%BASE_URL%menu/" data-page="menu">Menu</a></li>
+          <li><a class="footer-link" href="%BASE_URL%order/" data-page="order">Order ahead</a></li>
+          <li><a class="footer-link" href="%BASE_URL%rewards/" data-page="rewards">Rewards</a></li>
+          <li><a class="footer-link" href="%BASE_URL%branches/" data-page="branches">Branches</a></li>
+        </ul>
+      </div>
+      <div class="grid grid-cols-[6.5rem_minmax(0,1fr)] items-start gap-x-4 sm:grid-cols-[8rem_minmax(0,1fr)]">
+        <h2 id="footer-cafe" class="flex min-h-11 items-center text-sm font-semibold text-muted">Café</h2>
+        <ul class="flex flex-wrap gap-x-6" role="list" aria-labelledby="footer-cafe">
+          <li><a class="footer-link" href="%BASE_URL%about/" data-page="about">About</a></li>
+          <li><a class="footer-link" href="%BASE_URL%contact/" data-page="contact">Contact</a></li>
+          <li><a class="footer-link" href="%BASE_URL%contact/#faq">FAQ</a></li>
+          <li><a class="footer-link" href="%BASE_URL%accessibility/" data-page="accessibility">Accessibility</a></li>
+        </ul>
+      </div>
+      <div class="grid grid-cols-[6.5rem_minmax(0,1fr)] items-start gap-x-4 sm:grid-cols-[8rem_minmax(0,1fr)]">
+        <h2 id="footer-fine-print" class="flex min-h-11 items-center text-sm font-semibold text-muted">Fine print</h2>
+        <ul class="flex flex-wrap gap-x-6" role="list" aria-labelledby="footer-fine-print">
+          <li><a class="footer-link" href="%BASE_URL%terms/" data-page="terms">Terms of Service</a></li>
+          <li><a class="footer-link" href="%BASE_URL%privacy/" data-page="privacy">Privacy Policy</a></li>
+          <li><a class="footer-link" href="%BASE_URL%cookies/" data-page="cookies">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-1 text-sm text-muted">
+      <p class="flex items-start gap-2.5"><span class="stamp-mark size-5 text-xs" aria-hidden="true">u</span>© 2026 Usual. Times on this site are Cebu time.</p>
+      <button type="button" class="footer-link text-sm" data-concept>About this site</button>
+    </div>
+  </div>
+</footer>
+
+<!-- Messages such as "Added to your bag". Always in the page, so screen readers hear each one. -->
+<div class="toast" role="status" data-toast></div>
+
+<dialog class="m-auto w-[min(100%-2rem,30rem)] rounded-surface bg-surface p-0 text-ink shadow-dialog backdrop:bg-scrim open:animate-rise" id="concept-dialog" aria-labelledby="concept-title">
+  <div class="grid gap-4 p-6 sm:p-8">
+    <div class="flex items-start justify-between gap-4">
+      <h2 id="concept-title" class="pt-1.5 text-h3">About this site</h2>
+      <button type="button" class="icon-btn -mt-1 -mr-2" aria-label="Close" data-concept-close><i data-icon="x" class="size-6"></i></button>
+    </div>
+    <p>Usual is a concept brand, and this is a demonstration site. There are no branches to visit, and the Usual app isn’t in the App Store or on Google Play.</p>
+    <p>Nothing you enter here is sent anywhere: orders, sign-ins and messages stay in this browser, and no payments are taken.</p>
+    <p><a class="link inline-flex min-h-11 items-center" href="%BASE_URL%terms/">Read the Terms of Service</a></p>
+  </div>
+</dialog>
+
+<dialog class="sheet" id="item-sheet" aria-labelledby="sheet-title" aria-describedby="sheet-desc">
+  <form method="dialog" class="sheet__form" data-sheet-form>
+    <button type="button" class="sheet__close" aria-label="Close" data-sheet-close><i data-icon="x" class="size-5"></i></button>
+    <div class="sheet__media">
+      <img class="sheet__photo" src="%BASE_URL%photos/item-spanish-latte-640.webp" srcset="%BASE_URL%photos/item-spanish-latte-640.webp 640w, %BASE_URL%photos/item-spanish-latte-896.webp 896w" sizes="(min-width: 48rem) 24rem, 100vw" width="640" height="800" alt="" loading="lazy" decoding="async" data-sheet-photo />
+    </div>
+    <div class="sheet__main">
+      <div class="sheet__body" data-sheet-body>
+        <div class="sheet__head">
+          <h2 id="sheet-title" class="text-h3 focus:outline-none" tabindex="-1" data-sheet-name>Spanish latte</h2>
+          <p class="mt-1.5 text-muted" id="sheet-desc" data-sheet-desc></p>
+          <p class="mt-2.5 text-lg font-semibold tabular-nums" data-sheet-price></p>
+        </div>
+        <div data-sheet-groups></div>
+        <div class="opt-group">
+          <div class="opt-group__head">
+            <label class="opt-group__title" for="sheet-note">Note for the barista</label>
+            <span class="opt-group__rule" id="sheet-note-rule" data-sheet-note-rule>Optional, 140 left</span>
+          </div>
+          <textarea class="field mt-3 max-w-none py-2.5" id="sheet-note" name="note" rows="2" maxlength="140" placeholder="Less ice, no straw" aria-describedby="sheet-note-rule"></textarea>
+        </div>
+      </div>
+      <div class="sheet__footer">
+        <div class="qty shrink-0">
+          <button type="button" aria-label="One fewer" data-sheet-less><i data-icon="minus" class="size-5"></i></button>
+          <output aria-live="off" data-sheet-qty>1</output>
+          <button type="button" aria-label="One more" data-sheet-more><i data-icon="plus" class="size-5"></i></button>
+        </div>
+        <button type="submit" class="btn btn-primary min-w-0 flex-1" data-sheet-add>Add to bag</button>
+        <p class="sr-only" role="status" data-sheet-live></p>
+      </div>
+    </div>
+  </form>
+</dialog>

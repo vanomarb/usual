@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About Usual: a coffee bar for your break</title>
+    <meta name="description" content="Usual is a coffee bar in IT Park, Banilad and Capitol Site, Cebu City, built around ordering ahead: your drink ready at the time you pick, your name on the cup." />
+    <!-- include components/head.html -->
+    <script type="module" src="/main.ts"></script>
+  </head>
+  <body>
+    <!-- include components/header.html -->
+
+    <main id="main">
+      <section class="mx-auto max-w-page px-gutter pt-8 sm:pt-12 lg:pt-14" aria-labelledby="about-title">
+        <div class="grid gap-8 lg:grid-cols-12 lg:gap-x-6">
+          <h1 id="about-title" class="max-w-[14ch] text-h1 lg:col-span-6">A coffee bar for your break</h1>
+          <div class="grid gap-5 text-lg lg:col-span-5 lg:col-start-8 lg:pt-2">
+            <p>Usual started with one idea: a break is short, so your drink should be ready when it starts. You order ahead, pick a branch and a time, and your cup is waiting at the counter with your name on it.</p>
+            <p>Our three branches sit where Cebu works and studies. IT Park stays open all night for the night shift. Banilad and Capitol Site open from 7:00 AM to 10:00 PM, every day.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="pt-section" id="coffee" aria-labelledby="coffee-title">
+        <div class="mx-auto grid max-w-page gap-10 px-gutter lg:grid-cols-12 lg:items-center lg:gap-x-6">
+          <figure class="lg:col-span-6">
+            <img class="aspect-3/2 w-full rounded-surface object-cover" src="/photos/coffee-barista-tamp-800.webp" srcset="/photos/coffee-barista-tamp-800.webp 800w, /photos/coffee-barista-tamp-1536.webp 1536w" sizes="(min-width: 75rem) 548px, (min-width: 60rem) 46vw, calc(100vw - 2rem)" width="1536" height="1024" alt="A barista’s hands tamp ground coffee into a portafilter beside a stainless espresso machine" loading="lazy" decoding="async" />
+          </figure>
+          <div class="lg:col-span-5 lg:col-start-8">
+            <h2 id="coffee-title" class="text-h2">The same cup at every counter</h2>
+            <p class="mt-5 text-lg">We pour one house espresso at all three branches, a medium roast that sits well with milk. Baristas weigh every shot, so your usual tastes the same in Banilad at 7 AM and in IT Park at 3 AM.</p>
+            <dl class="mt-8 grid gap-4" data-stagger>
+              <div class="border-t border-line pt-4">
+                <dt class="font-semibold">Milk</dt>
+                <dd class="mt-0.5 text-muted">Steamed for each cup, never reheated. Oat and soy are always in the fridge.</dd>
+              </div>
+              <div class="border-t border-line pt-4">
+                <dt class="font-semibold">Tablea</dt>
+                <dd class="mt-0.5 text-muted">Cacao tablets from Cebu, melted into milk when you order.</dd>
+              </div>
+              <div class="border-t border-line pt-4">
+                <dt class="font-semibold">Bites</dt>
+                <dd class="mt-0.5 text-muted">Ensaymada, banana bread and cheese pandesal, baked every morning.</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-page px-gutter pt-section" aria-labelledby="ways-title">
+        <h2 id="ways-title" class="text-h2">How we work</h2>
+        <ul class="mt-10 grid gap-x-6 gap-y-10 md:grid-cols-3" role="list" data-stagger>
+          <li class="border-t border-ink pt-5">
+            <h3 class="text-h3">Made for the time you pick</h3>
+            <p class="mt-2 text-muted">We start an order a few minutes before its pickup time, so it reaches the counter fresh, never sitting under a heat lamp or melting over ice.</p>
+          </li>
+          <li class="border-t border-ink pt-5">
+            <h3 class="text-h3">Names, not numbers</h3>
+            <p class="mt-2 text-muted">Every cup carries the name you give us. Regulars hear theirs before they reach the bar.</p>
+          </li>
+          <li class="border-t border-ink pt-5">
+            <h3 class="text-h3">A card that pays you back</h3>
+            <p class="mt-2 text-muted">One stamp for every drink you order ahead, at any branch. The tenth drink is free, any size, any milk.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="mx-auto max-w-page px-gutter py-section" aria-labelledby="about-next-title">
+        <div class="grid gap-6 rounded-surface bg-band p-6 sm:p-10 md:grid-cols-12 md:items-end md:gap-x-6">
+          <div class="md:col-span-8">
+            <h2 id="about-next-title" class="text-h2">Come by, or order ahead</h2>
+            <p class="mt-3 max-w-[44ch] text-lg">See today’s hours and how busy each branch usually is, or have your usual waiting for you.</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-x-7 gap-y-3 md:col-span-4 md:justify-end">
+            <a class="btn btn-primary" href="%BASE_URL%order/">Order ahead</a>
+            <a class="link inline-flex min-h-11 items-center" href="%BASE_URL%branches/">Branches</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- include components/footer.html -->
+  </body>
+</html>

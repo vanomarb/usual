@@ -1,0 +1,235 @@
+import { after, test } from 'node:test'
+import assert from 'node:assert/strict'
+import { closeAll, loadPage } from '../../tests/harness.ts'
+import type { Page, PageOptions } from '../../tests/harness.ts'
+import { DRINKS } from '../lib/menu.ts'
+import { DEFAULT_CHOICE, optionsFor, priceOf } from '../lib/order.ts'
+import type { OrderChoice } from '../lib/order.ts'
+import { addToBag } from '../lib/cart.ts'
+import { peso } from '../lib/format.ts'
+
+after(closeAll)
+
+function start(options: PageOptions = {}) {
+  const p = loadPage('order/index.html', options)
+  assert.deepEqual(p.boot(), [], 'starts without errors')
+  return p
+}
+
+const radio = (p: Page, name: string, value: string) => p.$<HTMLInputElement>(`#order-form input[name="${name}"][value="${value}"]`)
+const choose = (p: Page, name: string, value: string) => radio(p, name, value).click()
+const checked = (p: Page, name: string) => p.$$<HTMLInputElement>(`#order-form input[name="${name}"]:checked`).map((input) => input.value)
+const place = (p: Page) => p.$<HTMLButtonElement>('[data-submit]').click()
+const withChoice = (change: Partial<OrderChoice>): OrderChoice => ({ ...DEFAULT_CHOICE, ...change })
+const usualChoice: OrderChoice = { drinkId: 'spanish-latte', size: '16oz', milk: 'oat', sugar: 25, extraShot: true, syrup: false, iced: true, name: 'Lea' }
+
+test('the builder starts on the default drink with its summary, price and an empty cup name', () => {
+  const p = start()
+  assert.deepEqual(checked(p, 'drink'), [DEFAULT_CHOICE.drinkId])
+  assert.equal(p.text('[data-summary-drink]'), 'Sea salt latte')
+  assert.equal(p.text('[data-summary-details]'), '12 oz, iced, fresh milk, 50% sugar')
+  assert.equal(p.text('[data-price]'), peso(priceOf(DEFAULT_CHOICE)))
+  assert.equal(p.text('[data-cup-name]'), 'Your name')
+  assert.equal(p.text('[data-summary-pickup]'), 'Pickup at IT Park, time not picked yet')
+})
+
+test('Hot or iced is a choice only for the drinks that come both ways, and it changes the summary', () => {
+  const p = start()
+  const temp = p.$('[data-step="temp"]')
+  assert.equal(temp.hidden, false)
+  assert.equal(p.$('[data-step="temp"] legend').textContent!.trim(), 'Hot or iced')
+  choose(p, 'temp', 'hot')
+  assert.equal(p.text('[data-summary-details]'), '12 oz, hot, fresh milk, 50% sugar')
+  const both = DRINKS.filter((d) => optionsFor(d.id).ice === 'choice')
+  const oneWay = DRINKS.filter((d) => optionsFor(d.id).ice !== 'choice')
+  assert.ok(both.length > 0 && oneWay.length > 0, 'the menu has both kinds')
+  choose(p, 'drink', oneWay[0].id)
+  assert.equal(temp.hidden, true, `${oneWay[0].name} is made one way`)
+  choose(p, 'drink', both[0].id)
+  assert.equal(temp.hidden, false)
+  assert.deepEqual(checked(p, 'temp'), ['hot'], 'the visitor’s hot or iced preference comes back')
+})
+
+test('choosing a drink rebuilds the sizes and milks for it, and a one-size drink skips the size step', () => {
+  const p = start()
+  choose(p, 'drink', 'cortado')
+  assert.equal(p.$('[data-step="size"]').hasAttribute('data-skip'), true)
+  assert.equal(p.$('[data-size-note]').hidden, false)
+  assert.equal(p.text('[data-size-note]'), 'Cortado comes in one size.')
+  choose(p, 'drink', 'spanish-latte')
+  assert.equal(p.$('[data-step="size"]').hasAttribute('data-skip'), false)
+  assert.deepEqual(p.$$<HTMLInputElement>('input[name="size"]').map((i) => i.value), ['12oz', '16oz'])
+  choose(p, 'size', '16oz')
+  choose(p, 'milk', 'oat')
+  p.$<HTMLInputElement>('input[name="extraShot"]').click()
+  assert.equal(p.text('[data-summary-details]'), '16 oz, iced, oat milk, 50% sugar, extra shot')
+  assert.equal(p.text('[data-price]'), peso(priceOf({ ...DEFAULT_CHOICE, drinkId: 'spanish-latte', size: '16oz', milk: 'oat', extraShot: true })))
+})
+
+test('typing the cup name writes it on the sleeve; a name over 16 characters shows an error at once', () => {
+  const p = start()
+  p.type('#cup-name', 'Lea')
+  assert.equal(p.text('[data-cup-name]'), 'Lea')
+  assert.equal(p.$('#name-error').hidden, true)
+  p.type('#cup-name', 'A name that is far too long')
+  assert.equal(p.$('#name-error').hidden, false)
+  assert.equal(p.$('#cup-name').getAttribute('aria-invalid'), 'true')
+  p.type('#cup-name', '')
+  assert.equal(p.$('#name-error').hidden, true, 'an empty name is only an error when ordering')
+})
+
+test('Enter or Space on an option picks it and moves focus on to the next step', () => {
+  const p = start()
+  const size = radio(p, 'size', '16oz')
+  size.focus()
+  const enter = p.key('Enter', size)
+  assert.equal(enter.defaultPrevented, true)
+  assert.equal(size.checked, true)
+  assert.equal(p.text('[data-summary-details]').startsWith('16 oz'), true)
+  const next = p.document.activeElement as HTMLInputElement
+  assert.equal(next.name, 'temp', 'focus lands in the next step, on its selected option')
+  assert.equal(next.checked, true)
+  p.key(' ', radio(p, 'milk', 'soy'))
+  assert.deepEqual(checked(p, 'milk'), ['soy'])
+  assert.equal((p.document.activeElement as HTMLInputElement).name, 'sugar')
+})
+
+test('pickup times are listed from ten minutes out and nothing is preselected', () => {
+  const p = start()
+  const times = p.$$<HTMLInputElement>('input[name="slot"]')
+  assert.equal(times.length, 6)
+  assert.deepEqual(p.$$('[data-slots] .chip__face').map((el) => el.textContent), ['10:10 AM', '10:15 AM', '10:20 AM', '10:25 AM', '10:30 AM', '10:35 AM'])
+  assert.equal(times.some((t) => t.checked), false)
+  assert.match(p.text('[data-branch-picks]'), /IT Park Open all night/)
+  assert.match(p.text('[data-branch-picks]'), /Banilad Open until 10:00 PM/)
+  times[1].click()
+  assert.equal(p.text('[data-summary-pickup]'), 'Ready 10:15 AM at IT Park')
+})
+
+test('the bag notice says how many items are in the bag: in the summary on a wide window, in the step hint on a phone', () => {
+  const bag = addToBag([], { kind: 'bite', biteId: 'ensaymada' }, 3)
+  const p = start({ storage: { 'usual:bag': bag } })
+  assert.equal(p.$('[data-bag-note]').hidden, false)
+  assert.equal(p.text('[data-bag-note-text]'), 'Your bag has 3 items. Add this drink to the bag to order them together.')
+  assert.equal(p.text('[data-bag-hint]'), 'Your bag has 3 items. Add this drink to the bag to order them together.', 'on a phone the step hint says it')
+  p.resize(1100)
+  assert.equal(p.text('[data-bag-hint]'), 'Ordering for more than one? Add this drink to your bag and build the next.', 'wide: the summary carries the notice instead')
+  const empty = start()
+  assert.equal(empty.$('[data-bag-note]').hidden, true)
+  assert.match(empty.text('[data-bag-hint]'), /^Ordering for more than one/)
+})
+
+test('Add to bag puts the drink as built in the bag, without a name, and the bag notice follows', () => {
+  const p = start()
+  choose(p, 'drink', 'spanish-latte')
+  choose(p, 'size', '16oz')
+  p.type('#cup-name', 'Lea')
+  p.$<HTMLButtonElement>('[data-add-to-bag]').click()
+  const bag = p.storage('usual:bag') as { qty: number; item: { choice: Record<string, unknown> } }[]
+  assert.equal(bag.length, 1)
+  assert.equal(bag[0].item.choice.drinkId, 'spanish-latte')
+  assert.equal(bag[0].item.choice.size, '16oz')
+  assert.equal('name' in bag[0].item.choice, false)
+  assert.match(p.text('[data-toast]'), /^Added Spanish latte, 16 oz/)
+  assert.equal(p.$('[data-bag-note]').hidden, false, 'the notice now shows, since the bag has an item')
+  assert.equal(p.text('[data-bag-count]'), '1')
+})
+
+test('placing an order: a time and a name are needed, then the ticket shows, the form locks and the card gets a stamp', async () => {
+  const p = start({ storage: { 'usual:card': { stamps: 2, free: 0 } } })
+  place(p)
+  assert.equal(p.text('[data-slot-error]'), 'Pick a pickup time.')
+  assert.equal((p.document.activeElement as HTMLInputElement).name, 'slot')
+  assert.equal(p.$('[data-ticket]').hidden, true)
+  p.$$<HTMLInputElement>('input[name="slot"]')[0].click()
+  place(p)
+  assert.equal(p.document.activeElement, p.$('#cup-name'), 'then the name')
+  assert.equal(p.text('#name-error'), 'Add a name for the cup.')
+  p.type('#cup-name', 'Lea')
+  choose(p, 'payment', 'card')
+  place(p)
+  const ticket = p.$('[data-ticket]')
+  assert.equal(ticket.hidden, false)
+  assert.equal(p.document.activeElement, ticket)
+  assert.equal(p.text('[data-ticket-title]'), 'Order for Lea')
+  assert.equal(p.text('[data-ticket-time]'), '10:10 AM')
+  assert.equal(p.text('[data-ticket-branch]'), 'at IT Park')
+  assert.equal(p.text('[data-ticket-drink]'), 'Sea salt latte')
+  assert.equal(p.text('[data-ticket-price]'), peso(priceOf(withChoice({}))))
+  assert.equal(p.text('[data-ticket-payment]'), 'Payment: Card. Nothing was charged.')
+  assert.equal(p.text('[data-ticket-stamp-note]'), 'Stamp 3 of 9 is on your card.')
+  assert.deepEqual(p.storage('usual:card'), { stamps: 3, free: 0 })
+  assert.equal(p.$<HTMLInputElement>('#cup-name').disabled, true, 'the form is locked')
+  assert.equal(p.$('[data-total]').hidden, true)
+  assert.equal(p.$$('.status__step')[0].getAttribute('aria-current'), 'step')
+  assert.equal(p.$('[data-ticket]').getAttribute('data-status'), 'received')
+  await p.wait(1900)
+  assert.equal(p.$('[data-ticket]').getAttribute('data-status'), 'brewing')
+  assert.equal(p.text('[data-ticket-live]'), 'Brewing your Sea salt latte now.')
+})
+
+test('the ticket saves the order as the usual, and a new order unlocks the form with no time picked', () => {
+  const p = start()
+  p.$$<HTMLInputElement>('input[name="slot"]')[0].click()
+  p.type('#cup-name', 'Lea')
+  place(p)
+  p.$<HTMLButtonElement>('[data-save-usual]').click()
+  assert.match(p.text('[data-saved-note]'), /^Saved as your usual on this device/)
+  assert.equal((p.storage('usual:usual') as OrderChoice).name, 'Lea')
+  assert.equal(p.$('[data-usual]').hidden, false)
+  p.$<HTMLButtonElement>('[data-new-order]').click()
+  assert.equal(p.$('[data-ticket]').hidden, true)
+  assert.equal(p.$<HTMLInputElement>('#cup-name').disabled, false)
+  assert.equal(p.$$<HTMLInputElement>('input[name="slot"]').some((t) => t.checked), false)
+  assert.equal((p.document.activeElement as HTMLInputElement).name, 'drink', 'focus goes back to the first step')
+})
+
+test('"Order my usual" places the saved drink at the soonest time, and locks the form', () => {
+  const p = start({ storage: { 'usual:usual': usualChoice, 'usual:card': { stamps: 0, free: 1 } } })
+  assert.equal(p.$('[data-usual]').hidden, false)
+  assert.equal(p.text('[data-usual-drink]'), 'Spanish latte, 16 oz, iced, oat milk, 25% sugar, extra shot. For Lea.')
+  assert.equal(p.text('[data-usual-price]'), peso(priceOf(usualChoice)))
+  assert.equal(p.text('[data-usual-ready]'), 'Ready 10:10 AM at IT Park')
+  p.$<HTMLButtonElement>('[data-usual-order]').click()
+  assert.equal(p.$('[data-ticket]').hidden, false)
+  assert.equal(p.text('[data-ticket-title]'), 'Order for Lea')
+  assert.equal(p.text('[data-ticket-time]'), '10:10 AM')
+  assert.equal(p.text('[data-ticket-drink]'), 'Spanish latte')
+  assert.equal(p.text('[data-ticket-price]'), peso(priceOf(usualChoice)))
+  assert.equal(p.$<HTMLButtonElement>('[data-usual-order]').disabled, true)
+})
+
+test('a free drink on the card is offered, takes the price off and is spent instead of earning a stamp', () => {
+  const p = start({ storage: { 'usual:card': { stamps: 4, free: 1 } } })
+  const free = p.$('[data-free]')
+  assert.equal(free.hidden, false)
+  p.$<HTMLInputElement>('[data-free] input').click()
+  assert.equal(p.text('[data-price]'), peso(0))
+  p.$$<HTMLInputElement>('input[name="slot"]')[0].click()
+  p.type('#cup-name', 'Lea')
+  place(p)
+  assert.equal(p.text('[data-ticket-price]'), peso(0))
+  assert.equal(p.text('[data-ticket-stamp-note]'), 'Your free drink covered this one, so there’s no stamp for it.')
+  assert.deepEqual(p.storage('usual:card'), { stamps: 4, free: 0 })
+})
+
+test('the ninth stamp says the next drink is free', () => {
+  const p = start({ storage: { 'usual:card': { stamps: 8, free: 0 } } })
+  p.$$<HTMLInputElement>('input[name="slot"]')[0].click()
+  p.type('#cup-name', 'Lea')
+  place(p)
+  assert.equal(p.text('[data-ticket-stamp-note]'), 'That was your ninth stamp. Your next drink is free.')
+  assert.deepEqual(p.storage('usual:card'), { stamps: 0, free: 1 })
+})
+
+test('a free drink earned in another tab is offered here without a reload, and an order uses the saved card', () => {
+  const p = start({ storage: { 'usual:card': { stamps: 1, free: 0 } } })
+  assert.equal(p.$('[data-free]').hidden, true)
+  p.otherTabSaves('usual:card', { stamps: 0, free: 1 })
+  assert.equal(p.$('[data-free]').hidden, false)
+  p.$$<HTMLInputElement>('input[name="slot"]')[0].click()
+  p.type('#cup-name', 'Lea')
+  p.window.localStorage.setItem('usual:card', JSON.stringify({ stamps: 6, free: 0 }))
+  place(p)
+  assert.deepEqual(p.storage('usual:card'), { stamps: 7, free: 0 })
+})

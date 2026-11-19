@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cookie Policy: Usual</title>
+    <meta name="description" content="Usual doesn’t use cookies, analytics or tracking. The site keeps only what its features need in your browser’s local storage, listed here." />
+    <!-- include components/head.html -->
+    <script type="module" src="/main.ts"></script>
+  </head>
+  <body>
+    <!-- include components/header.html -->
+
+    <main id="main">
+      <article class="mx-auto max-w-page px-gutter pt-8 pb-section sm:pt-12 lg:pt-14" aria-labelledby="cookies-title">
+        <h1 id="cookies-title" class="text-h1">Cookie Policy</h1>
+        <p class="mt-4 text-muted">Last updated 18 November 2026</p>
+
+        <div class="doc mt-8">
+          <p class="text-lg font-semibold">Usual doesn’t use cookies.</p>
+          <p>There are no analytics, advertising or tracking tools on this site, and no scripts from other companies. Fonts and icons are served from this site, so loading a page tells no one else that you visited.</p>
+
+          <h2>What we use instead</h2>
+          <p>A few features need to remember things between pages, such as your bag and your stamp card. For those, the site uses your browser’s local storage. It stays on your device and is never sent to us or anyone else.</p>
+          <table>
+            <thead>
+              <tr><th scope="col">Name</th><th scope="col">What it is for</th><th scope="col">Kept until</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>usual:account</code></td><td>Keeps you signed in: your first name and the email or mobile number you used</td><td>You sign out</td></tr>
+              <tr><td><code>usual:bag</code></td><td>The items in your bag, so they are still there on the next page</td><td>You place the order or empty the bag</td></tr>
+              <tr><td><code>usual:usual</code></td><td>The drink you saved as your usual</td><td>You clear site data</td></tr>
+              <tr><td><code>usual:card</code></td><td>Your stamps and free drinks</td><td>You clear site data</td></tr>
+              <tr><td><code>usual:probe</code></td><td>A test entry, written and removed at once, to check that your browser keeps site data</td><td>Removed straight away</td></tr>
+            </tbody>
+          </table>
+          <p>These entries are strictly necessary for features you ask for, so we don’t show a consent banner. If your browser blocks site data, the site still works; it just forgets your bag, card and sign-in when you leave.</p>
+
+          <h2>How to clear it</h2>
+          <ul>
+            <li>Sign out on your <a href="%BASE_URL%account/">account page</a> to remove <code>usual:account</code>.</li>
+            <li>Place your order or remove each item to empty <code>usual:bag</code>.</li>
+            <li>Clear this site’s data in your browser’s settings to remove everything at once.</li>
+          </ul>
+
+          <h2>About this demonstration site</h2>
+          <p>Usual is a concept brand, and this is a demonstration site. Everything described here is how the site really behaves: it sets no cookies and sends nothing you enter anywhere.</p>
+
+          <p>For how the running business would handle personal data, see our <a href="%BASE_URL%privacy/">Privacy Policy</a>.</p>
+        </div>
+      </article>
+    </main>
+
+    <!-- include components/footer.html -->
+  </body>
+</html>
