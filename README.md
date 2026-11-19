@@ -3,8 +3,13 @@
 Usual is a concept coffee bar with three branches in Cebu City: IT Park, open all night for the night shift, and Banilad and Capitol Site, open 7:00 AM to 10:00 PM. Its site lets you order ahead, fill an order bag, sign in with a one-time code, see your name on the cup, save your usual and collect stamps, and it markets the Usual app.
 
 ![Usual's home page on a desktop: the headline "Your usual, ready at the counter" beside the stamp card, five stamps in and four to a free drink.](docs/screenshots/cover.png)
+
 ![The item sheet on a desktop: the Spanish latte's photo beside its size, hot or iced and milk choices, with the quantity and "Add 1 to bag · ₱165".](docs/screenshots/desktop.png)
-![Ordering on a phone: the confirmation after placing an order, with the ready time and the first stamp.](docs/screenshots/phone-order.png) ![The coffee list on a phone: each drink with its photo, description and starting price, such as "From ₱120"; tapping a drink opens its sheet.](docs/screenshots/phone-menu.png)
+
+<p>
+  <img src="docs/screenshots/phone-order.png" width="150" alt="Ordering on a phone: the confirmation after placing an order, with the ready time and the first stamp.">
+  <img src="docs/screenshots/phone-menu.png" width="150" alt="The coffee list on a phone: each drink with its photo, description and starting price, such as &quot;From ₱120&quot;; tapping a drink opens its sheet.">
+</p>
 
 ## Pages
 
